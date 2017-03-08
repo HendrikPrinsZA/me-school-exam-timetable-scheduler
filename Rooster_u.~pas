@@ -1,0 +1,337 @@
+unit Rooster_u;
+
+interface
+
+uses
+  Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
+  Dialogs, StdCtrls, SuperVisor_u, Venues_u, tests_u,final_u, Menus, jpeg, ExtCtrls,
+  ComCtrls, Buttons, OleCtnrs, MPlayer;
+
+type
+  TfrmMain = class(TForm)
+    MainMenu1: TMainMenu;
+    File1: TMenuItem;
+    Setup1: TMenuItem;
+    Supervisors1: TMenuItem;
+    Nenues1: TMenuItem;
+    ests1: TMenuItem;
+    N1: TMenuItem;
+    Exit1: TMenuItem;
+    pnlStepWizard: TPanel;
+    shpOne: TShape;
+    shpTwo: TShape;
+    shpThree: TShape;
+    shpFour: TShape;
+    RichEdit1: TRichEdit;
+    RichEdit2: TRichEdit;
+    RichEdit3: TRichEdit;
+    RichEdit4: TRichEdit;
+    Label41: TLabel;
+    Label1: TLabel;
+    Label2: TLabel;
+    Label3: TLabel;
+    Label4: TLabel;
+    imgR1: TImage;
+    imgR2: TImage;
+    imgR3: TImage;
+    imgW1: TImage;
+    imgW2: TImage;
+    imgW3: TImage;
+    rgpWizzard: TRadioGroup;
+    Image1: TImage;
+    Image2: TImage;
+    Label5: TLabel;
+    Label6: TLabel;
+    pnlMain: TPanel;
+    Wizzard1: TMenuItem;
+    Label7: TLabel;
+    Memo1: TMemo;
+    Memo2: TMemo;
+    pnlWizz: TPanel;
+    pnlOwn: TPanel;
+    btnWizz: TButton;
+    Memo3: TMemo;
+    Memo4: TMemo;
+    btnTests: TButton;
+    btnVenues: TButton;
+    btnSupervisors: TButton;
+    btnFinal: TButton;
+    Label8: TLabel;
+    Label9: TLabel;
+    Label10: TLabel;
+    Label11: TLabel;
+    Label13: TLabel;
+    Label14: TLabel;
+    Label15: TLabel;
+    Label16: TLabel;
+    btnClose: TButton;
+    Shape1: TShape;
+    Label12: TLabel;
+    BitBtn1: TBitBtn;
+    Image3: TImage;
+    MediaPlayer1: TMediaPlayer;
+    procedure refreshWizzard();
+    procedure Supervisors1Click(Sender: TObject);
+    procedure Nenues1Click(Sender: TObject);
+    procedure ests1Click(Sender: TObject);
+    procedure shpOneMouseDown(Sender: TObject; Button: TMouseButton;
+      Shift: TShiftState; X, Y: Integer);
+    procedure down(shp: TShape);
+    procedure up(shp: TShape);
+    procedure shpOneMouseUp(Sender: TObject; Button: TMouseButton;
+      Shift: TShiftState; X, Y: Integer);
+    procedure shpTwoMouseDown(Sender: TObject; Button: TMouseButton;
+      Shift: TShiftState; X, Y: Integer);
+    procedure shpThreeMouseDown(Sender: TObject; Button: TMouseButton;
+      Shift: TShiftState; X, Y: Integer);
+    procedure shpFourMouseDown(Sender: TObject; Button: TMouseButton;
+      Shift: TShiftState; X, Y: Integer);
+    procedure shpFourMouseUp(Sender: TObject; Button: TMouseButton;
+      Shift: TShiftState; X, Y: Integer);
+    procedure shpThreeMouseUp(Sender: TObject; Button: TMouseButton;
+      Shift: TShiftState; X, Y: Integer);
+    procedure shpTwoMouseUp(Sender: TObject; Button: TMouseButton;
+      Shift: TShiftState; X, Y: Integer);
+    procedure FormActivate(Sender: TObject);
+    procedure FormShow(Sender: TObject);
+    procedure Wizzard1Click(Sender: TObject);
+    procedure btnCloseClick(Sender: TObject);
+    procedure btnWizzClick(Sender: TObject);
+    procedure btnTestsClick(Sender: TObject);
+    procedure btnVenuesClick(Sender: TObject);
+    procedure btnSupervisorsClick(Sender: TObject);
+    procedure btnFinalClick(Sender: TObject);
+    procedure Exit1Click(Sender: TObject);
+    procedure Shape1MouseDown(Sender: TObject; Button: TMouseButton;
+      Shift: TShiftState; X, Y: Integer);
+    procedure BitBtn1Click(Sender: TObject);
+  private
+    { Private declarations }
+  public
+    { Public declarations }
+  end;
+
+var
+  frmMain: TfrmMain;
+
+implementation
+
+
+{$R *.dfm}
+procedure TfrmMain.refreshWizzard();
+var
+list: TStrings;
+begin
+    rgpWizzard.Items.Clear;
+    Tekstra.FindAll('*.tst',faAnyFile,rgpWizzard.Items);
+    if (rgpWizzard.Items.ValueFromIndex[0]='') then
+    begin
+        imgW1.Visible:=true;
+        imgR1.Visible:=false;
+    end else
+    begin
+        imgW1.Visible:=false;
+        imgR1.Visible:=true;
+    end;
+
+    rgpWizzard.Items.Clear;
+    Tekstra.FindAll('*.ven',faAnyFile,rgpWizzard.Items);
+    if (rgpWizzard.Items.ValueFromIndex[0]='') then
+    begin
+        imgW2.Visible:=true;
+        imgR2.Visible:=false;
+    end else
+    begin
+        imgW2.Visible:=false;
+        imgR2.Visible:=true;
+    end;
+
+    rgpWizzard.Items.Clear;
+    Tekstra.FindAll('*.sup',faAnyFile,rgpWizzard.Items);
+    if (rgpWizzard.Items.ValueFromIndex[0]='') then
+    begin
+        imgW3.Visible:=true;
+        imgR3.Visible:=false;
+    end else
+    begin
+        imgW3.Visible:=false;
+        imgR3.Visible:=true;
+    end;
+
+    if (imgR1.Visible =true) AND (imgR2.Visible =true) AND (imgR3.Visible =true) then
+    begin
+        shpFour.Enabled:=true;
+        label4.Enabled:=true;
+    end else
+    begin
+        shpFour.Enabled:=false;
+        label4.Enabled:=false;
+    end;
+            //////
+end;
+
+
+procedure TfrmMain.down(shp: TShape);
+begin
+    shp.Width:=shp.Width-10;
+    shp.Height:=shp.Height-10;
+    shp.Left:=shp.Left+5;
+    shp.Top:=shp.Top+5;
+end;
+
+procedure TfrmMain.up(shp: TShape);
+begin
+    shp.Width:=shp.Width+10;
+    shp.Height:=shp.Height+10;
+    shp.Left:=shp.Left-5;
+    shp.Top:=shp.Top-5;
+end;
+
+
+procedure TfrmMain.Supervisors1Click(Sender: TObject);
+begin
+    frmSupervisor.Show;
+end;
+
+procedure TfrmMain.Nenues1Click(Sender: TObject);
+begin
+    frmVenues.Show;
+end;
+
+procedure TfrmMain.ests1Click(Sender: TObject);
+begin
+    frmTests.Show;
+end;
+
+procedure TfrmMain.shpOneMouseDown(Sender: TObject; Button: TMouseButton;
+  Shift: TShiftState; X, Y: Integer);
+begin
+    down(shpOne);
+    
+end;
+
+procedure TfrmMain.shpOneMouseUp(Sender: TObject; Button: TMouseButton;
+  Shift: TShiftState; X, Y: Integer);
+begin
+    up(shpOne);
+    frmTests.Show;
+end;
+
+procedure TfrmMain.shpTwoMouseDown(Sender: TObject; Button: TMouseButton;
+  Shift: TShiftState; X, Y: Integer);
+begin
+    down(shpTwo);
+end;
+
+procedure TfrmMain.shpThreeMouseDown(Sender: TObject; Button: TMouseButton;
+  Shift: TShiftState; X, Y: Integer);
+begin
+    down(shpThree);
+end;
+
+procedure TfrmMain.shpFourMouseDown(Sender: TObject; Button: TMouseButton;
+  Shift: TShiftState; X, Y: Integer);
+begin
+    down(shpFour);
+end;
+
+procedure TfrmMain.shpFourMouseUp(Sender: TObject; Button: TMouseButton;
+  Shift: TShiftState; X, Y: Integer);
+begin
+    up(shpFour);
+    frmFinal.Show;
+end;
+
+procedure TfrmMain.shpThreeMouseUp(Sender: TObject; Button: TMouseButton;
+  Shift: TShiftState; X, Y: Integer);
+begin
+    up(shpThree);
+    frmSupervisor.Show;
+end;
+
+procedure TfrmMain.shpTwoMouseUp(Sender: TObject; Button: TMouseButton;
+  Shift: TShiftState; X, Y: Integer);
+begin
+    up(shpTwo);
+    frmVenues.Show;
+end;
+
+procedure TfrmMain.FormActivate(Sender: TObject);
+begin
+    refreshWizzard();
+end;
+
+procedure TfrmMain.FormShow(Sender: TObject);
+begin
+    refreshWizzard();
+end;
+
+procedure TfrmMain.Wizzard1Click(Sender: TObject);
+begin
+    pnlStepWizard.Visible:= true;
+    pnlMain.Visible:=false;
+end;
+
+procedure TfrmMain.btnCloseClick(Sender: TObject);
+begin
+    pnlStepWizard.Visible:=false;
+    pnlMain.Visible:=true;
+end;
+
+procedure TfrmMain.btnWizzClick(Sender: TObject);
+begin
+    pnlStepWizard.Visible:=true;
+    pnlMain.Visible:=false;
+end;
+
+procedure TfrmMain.btnTestsClick(Sender: TObject);
+begin
+    frmTests.Show;
+end;
+
+procedure TfrmMain.btnVenuesClick(Sender: TObject);
+begin
+    frmVenues.Show;
+end;
+
+procedure TfrmMain.btnSupervisorsClick(Sender: TObject);
+begin
+    frmSupervisor.Show;
+    
+end;
+
+procedure TfrmMain.btnFinalClick(Sender: TObject);
+begin
+    frmFinal.Show;
+
+end;
+
+procedure TfrmMain.Exit1Click(Sender: TObject);
+begin
+    close();
+end;
+
+procedure TfrmMain.Shape1MouseDown(Sender: TObject; Button: TMouseButton;
+  Shift: TShiftState; X, Y: Integer);
+begin
+    shape1.Visible:=false;
+    label5.Visible:=false;
+    label6.Visible:=false;
+    image2.Visible:=false;
+    image1.Visible:=false;
+    label12.Visible:=false;
+    BitBtn1.Visible:=true;
+end;
+
+procedure TfrmMain.BitBtn1Click(Sender: TObject);
+begin
+    shape1.Visible:=true;
+    label5.Visible:=true;
+    label6.Visible:=true;
+    image2.Visible:=true;
+    image1.Visible:=true;
+    label12.Visible:=true;
+    BitBtn1.Visible:=false;
+end;
+
+end.

@@ -1,0 +1,19 @@
+[General]
+Name=Rooster_p
+Project=1
+[Classes]
+Count=14
+Class0="TfrmMain","TForm","Rooster_u","11","E:\Personal\programs\rooster\Rooster_u.pas"
+Class1="TfrmSupervisor","TForm","SuperVisor_u","0","E:\Personal\programs\rooster\SuperVisor_u.pas"
+Class2="ekstra","","ekstra_u","15","E:\Personal\programs\rooster\ekstra_u.pas"
+Class3="TfrmVenues","TForm","venues_u","0","E:\Personal\programs\rooster\venues_u.pas"
+Class4="TfrmTests","TForm","tests_u","0","E:\Personal\programs\rooster\tests_u.pas"
+Class5="TfrmFinal","TForm","final_u","11","E:\Personal\programs\rooster\final_u.pas"
+Class6="CoCOMAdminCatalog","","COMAdmin_TLB","879","C:\Program Files (x86)\Borland\Delphi7\Imports\COMAdmin_TLB.pas"
+Class7="TCOMAdminCatalog","TOleServer","COMAdmin_TLB","897","C:\Program Files (x86)\Borland\Delphi7\Imports\COMAdmin_TLB.pas"
+Class8="TCOMAdminCatalogProperties","TPersistent","COMAdmin_TLB","1046","C:\Program Files (x86)\Borland\Delphi7\Imports\COMAdmin_TLB.pas"
+Class9="CoCOMAdminCatalogObject","","COMAdmin_TLB","0","C:\Program Files (x86)\Borland\Delphi7\Imports\COMAdmin_TLB.pas"
+Class10="CoCOMAdminCatalogCollection","","COMAdmin_TLB","1086","C:\Program Files (x86)\Borland\Delphi7\Imports\COMAdmin_TLB.pas"
+Class11="calendar","Tobject","cal_u","9","E:\Personal\programs\rooster\cal_u.pas"
+Class12="TMZTrackBar","TTrackBar","movie_u","0","E:\Personal\programs\rooster\movie_u.pas"
+Class13="TfrmMovie","TForm","movie_u","20","E:\Personal\programs\rooster\movie_u.pas"

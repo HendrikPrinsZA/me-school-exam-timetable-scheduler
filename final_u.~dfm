@@ -1,0 +1,2679 @@
+object frmFinal: TfrmFinal
+  Left = 135
+  Top = 84
+  Width = 1280
+  Height = 826
+  Caption = 'frmFinal'
+  Color = clSkyBlue
+  Font.Charset = DEFAULT_CHARSET
+  Font.Color = clWindowText
+  Font.Height = -11
+  Font.Name = 'MS Sans Serif'
+  Font.Style = []
+  OldCreateOrder = False
+  OnActivate = FormActivate
+  OnClose = FormClose
+  OnShow = FormShow
+  PixelsPerInch = 96
+  TextHeight = 13
+  object pnlCal: TPanel
+    Left = 0
+    Top = 0
+    Width = 1264
+    Height = 788
+    Align = alClient
+    Color = clMoneyGreen
+    TabOrder = 0
+    object Label42: TLabel
+      Left = 236
+      Top = 336
+      Width = 146
+      Height = 22
+      Caption = 'Viewing selection:'
+      Color = clMoneyGreen
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = clBlack
+      Font.Height = -20
+      Font.Name = 'Modern No. 20'
+      Font.Style = []
+      ParentColor = False
+      ParentFont = False
+    end
+    object Label23: TLabel
+      Left = 579
+      Top = 320
+      Width = 162
+      Height = 41
+      Caption = 'Final step'
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = clWindowText
+      Font.Height = -40
+      Font.Name = 'Modern No. 20'
+      Font.Style = []
+      ParentFont = False
+    end
+    object Label31: TLabel
+      Left = 916
+      Top = 56
+      Width = 72
+      Height = 22
+      Cursor = crHandPoint
+      Caption = 'Calendar'
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = clWindowText
+      Font.Height = -20
+      Font.Name = 'Modern No. 20'
+      Font.Style = []
+      ParentFont = False
+      OnClick = pnlReviewClick
+    end
+    object pnlDays: TPanel
+      Left = 16
+      Top = 56
+      Width = 617
+      Height = 257
+      Color = clSkyBlue
+      TabOrder = 1
+      object Label24: TLabel
+        Left = 260
+        Top = 8
+        Width = 85
+        Height = 22
+        Caption = 'Setup days'
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clWindowText
+        Font.Height = -20
+        Font.Name = 'Modern No. 20'
+        Font.Style = []
+        ParentFont = False
+      end
+      object Label25: TLabel
+        Left = 88
+        Top = 48
+        Width = 77
+        Height = 13
+        Caption = 'Number of days:'
+      end
+      object Label26: TLabel
+        Left = 88
+        Top = 88
+        Width = 136
+        Height = 13
+        Caption = 'Number of sessions per day: '
+      end
+      object Label28: TLabel
+        Left = 352
+        Top = 88
+        Width = 36
+        Height = 13
+        Caption = 'each of'
+      end
+      object Label32: TLabel
+        Left = 520
+        Top = 88
+        Width = 26
+        Height = 13
+        Caption = 'hours'
+      end
+      object Label33: TLabel
+        Left = 200
+        Top = 144
+        Width = 109
+        Height = 13
+        Caption = 'Test hours per session:'
+      end
+      object lblHPC: TLabel
+        Left = 384
+        Top = 144
+        Width = 6
+        Height = 13
+        Caption = '0'
+      end
+      object Label30: TLabel
+        Left = 200
+        Top = 120
+        Width = 115
+        Height = 13
+        Caption = 'Number of tests per day:'
+      end
+      object lblTestnmrs: TLabel
+        Left = 384
+        Top = 120
+        Width = 6
+        Height = 13
+        Caption = '0'
+      end
+      object prog: TGauge
+        Left = 200
+        Top = 184
+        Width = 201
+        Height = 17
+        Progress = 0
+      end
+      object Label34: TLabel
+        Left = 248
+        Top = 168
+        Width = 117
+        Height = 13
+        Caption = 'Tests/total sessions ratio'
+      end
+      object edtDays: TSpinEdit
+        Left = 224
+        Top = 48
+        Width = 121
+        Height = 22
+        MaxValue = 50
+        MinValue = 0
+        TabOrder = 0
+        Value = 0
+        OnChange = edtDaysChange
+      end
+      object edtSessions: TSpinEdit
+        Left = 224
+        Top = 88
+        Width = 121
+        Height = 22
+        MaxValue = 10
+        MinValue = 0
+        TabOrder = 1
+        Value = 0
+        OnChange = edtDaysChange
+      end
+      object edtHours: TSpinEdit
+        Left = 392
+        Top = 88
+        Width = 121
+        Height = 22
+        MaxValue = 10
+        MinValue = 0
+        TabOrder = 2
+        Value = 0
+        OnChange = edtDaysChange
+      end
+      object btnLoadSettings: TButton
+        Left = 352
+        Top = 216
+        Width = 97
+        Height = 25
+        Caption = 'Confirm settings'
+        TabOrder = 3
+        OnClick = btnLoadSettingsClick
+      end
+      object btnRecom: TButton
+        Left = 144
+        Top = 216
+        Width = 177
+        Height = 25
+        Caption = 'Calculate recomended settings'
+        TabOrder = 4
+        OnClick = btnRecomClick
+      end
+    end
+    object pnlSelectFiles: TPanel
+      Left = 16
+      Top = 8
+      Width = 617
+      Height = 41
+      Cursor = crHandPoint
+      BorderWidth = 1
+      BorderStyle = bsSingle
+      Color = clSkyBlue
+      DragCursor = crNo
+      TabOrder = 3
+      OnClick = pnlSelectFilesClick
+      object Label3: TLabel
+        Left = 220
+        Top = 8
+        Width = 164
+        Height = 22
+        Caption = 'Load files into setup'
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clWindowText
+        Font.Height = -20
+        Font.Name = 'Modern No. 20'
+        Font.Style = []
+        ParentFont = False
+        OnClick = pnlSelectFilesClick
+      end
+      object lblexpand: TLabel
+        Left = 504
+        Top = 16
+        Width = 102
+        Height = 13
+        Caption = 'Click panel to expand'
+        OnClick = pnlSelectFilesClick
+      end
+      object rgpLoadTests: TRadioGroup
+        Left = 8
+        Top = 40
+        Width = 169
+        Height = 273
+        Caption = 'Available test-files'
+        TabOrder = 0
+      end
+      object rgpLoadVenues: TRadioGroup
+        Left = 192
+        Top = 40
+        Width = 169
+        Height = 273
+        Caption = 'Available venue-files'
+        TabOrder = 1
+      end
+      object rgpLoadSupervisors: TRadioGroup
+        Left = 376
+        Top = 40
+        Width = 169
+        Height = 273
+        Caption = 'Available supervisor-files'
+        TabOrder = 2
+      end
+      object btnLoad: TButton
+        Left = 80
+        Top = 320
+        Width = 97
+        Height = 25
+        Caption = 'Load tests-file'
+        TabOrder = 3
+        OnClick = btnLoadClick
+      end
+      object Button2: TButton
+        Left = 264
+        Top = 320
+        Width = 97
+        Height = 25
+        Caption = 'Load venue-file'
+        TabOrder = 4
+        OnClick = Button2Click
+      end
+      object Button4: TButton
+        Left = 440
+        Top = 320
+        Width = 105
+        Height = 25
+        Caption = 'Load supervisor-file'
+        TabOrder = 5
+        OnClick = Button4Click
+      end
+      object Button5: TButton
+        Left = 184
+        Top = 368
+        Width = 65
+        Height = 25
+        Caption = 'Refresh all'
+        TabOrder = 6
+        OnClick = Button5Click
+      end
+      object btnLoadAll: TButton
+        Left = 264
+        Top = 368
+        Width = 97
+        Height = 25
+        Caption = 'Load all'
+        TabOrder = 7
+        OnClick = btnLoadAllClick
+      end
+    end
+    object pnlReview: TPanel
+      Left = 648
+      Top = 8
+      Width = 617
+      Height = 41
+      Cursor = crHandPoint
+      BorderWidth = 1
+      BorderStyle = bsSingle
+      Color = clSkyBlue
+      TabOrder = 2
+      OnClick = pnlReviewClick
+      object Label22: TLabel
+        Left = 236
+        Top = 8
+        Width = 133
+        Height = 22
+        Cursor = crHandPoint
+        Caption = 'Review and stats'
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clWindowText
+        Font.Height = -20
+        Font.Name = 'Modern No. 20'
+        Font.Style = []
+        ParentFont = False
+        OnClick = pnlReviewClick
+      end
+      object lblReview: TLabel
+        Left = 504
+        Top = 16
+        Width = 102
+        Height = 13
+        Cursor = crHandPoint
+        Caption = 'Click panel to expand'
+        OnClick = pnlReviewClick
+      end
+      object page: TPageControl
+        Left = 0
+        Top = 41
+        Width = 617
+        Height = 609
+        ActivePage = tabTests
+        MultiLine = True
+        Style = tsButtons
+        TabOrder = 0
+        TabWidth = 150
+        object tabStats: TTabSheet
+          Caption = 'View stats'
+          object shp1: TShape
+            Left = 96
+            Top = 40
+            Width = 401
+            Height = 169
+            Pen.Width = 2
+            Shape = stRoundRect
+          end
+          object Label4: TLabel
+            Left = 112
+            Top = 88
+            Width = 38
+            Height = 13
+            Caption = 'Grade 8'
+            Color = clWhite
+            Font.Charset = DEFAULT_CHARSET
+            Font.Color = clBlack
+            Font.Height = -11
+            Font.Name = 'MS Sans Serif'
+            Font.Style = []
+            ParentColor = False
+            ParentFont = False
+          end
+          object Label5: TLabel
+            Left = 112
+            Top = 104
+            Width = 38
+            Height = 13
+            Caption = 'Grade 9'
+            Color = clWhite
+            Font.Charset = DEFAULT_CHARSET
+            Font.Color = clBlack
+            Font.Height = -11
+            Font.Name = 'MS Sans Serif'
+            Font.Style = []
+            ParentColor = False
+            ParentFont = False
+          end
+          object lbl9: TLabel
+            Left = 376
+            Top = 104
+            Width = 6
+            Height = 13
+            Caption = '0'
+            Color = clWhite
+            Font.Charset = DEFAULT_CHARSET
+            Font.Color = clBlack
+            Font.Height = -11
+            Font.Name = 'MS Sans Serif'
+            Font.Style = []
+            ParentColor = False
+            ParentFont = False
+          end
+          object Label7: TLabel
+            Left = 112
+            Top = 120
+            Width = 44
+            Height = 13
+            Caption = 'Grade 10'
+            Color = clWhite
+            Font.Charset = DEFAULT_CHARSET
+            Font.Color = clBlack
+            Font.Height = -11
+            Font.Name = 'MS Sans Serif'
+            Font.Style = []
+            ParentColor = False
+            ParentFont = False
+          end
+          object lbl10: TLabel
+            Left = 376
+            Top = 120
+            Width = 6
+            Height = 13
+            Caption = '0'
+            Color = clWhite
+            Font.Charset = DEFAULT_CHARSET
+            Font.Color = clBlack
+            Font.Height = -11
+            Font.Name = 'MS Sans Serif'
+            Font.Style = []
+            ParentColor = False
+            ParentFont = False
+          end
+          object Label9: TLabel
+            Left = 112
+            Top = 136
+            Width = 44
+            Height = 13
+            Caption = 'Grade 11'
+            Color = clWhite
+            Font.Charset = DEFAULT_CHARSET
+            Font.Color = clBlack
+            Font.Height = -11
+            Font.Name = 'MS Sans Serif'
+            Font.Style = []
+            ParentColor = False
+            ParentFont = False
+          end
+          object lbl11: TLabel
+            Left = 376
+            Top = 136
+            Width = 6
+            Height = 13
+            Caption = '0'
+            Color = clWhite
+            Font.Charset = DEFAULT_CHARSET
+            Font.Color = clBlack
+            Font.Height = -11
+            Font.Name = 'MS Sans Serif'
+            Font.Style = []
+            ParentColor = False
+            ParentFont = False
+          end
+          object Label11: TLabel
+            Left = 112
+            Top = 152
+            Width = 44
+            Height = 13
+            Caption = 'Grade 12'
+            Color = clWhite
+            Font.Charset = DEFAULT_CHARSET
+            Font.Color = clBlack
+            Font.Height = -11
+            Font.Name = 'MS Sans Serif'
+            Font.Style = []
+            ParentColor = False
+            ParentFont = False
+          end
+          object lbl12: TLabel
+            Left = 376
+            Top = 152
+            Width = 6
+            Height = 13
+            Caption = '0'
+            Color = clWhite
+            Font.Charset = DEFAULT_CHARSET
+            Font.Color = clBlack
+            Font.Height = -11
+            Font.Name = 'MS Sans Serif'
+            Font.Style = []
+            ParentColor = False
+            ParentFont = False
+          end
+          object lblTotal: TLabel
+            Left = 376
+            Top = 168
+            Width = 8
+            Height = 13
+            Caption = '0'
+            Color = clWhite
+            Font.Charset = DEFAULT_CHARSET
+            Font.Color = clBlack
+            Font.Height = -11
+            Font.Name = 'MS Sans Serif'
+            Font.Style = [fsBold]
+            ParentColor = False
+            ParentFont = False
+          end
+          object lbl8: TLabel
+            Left = 376
+            Top = 88
+            Width = 6
+            Height = 13
+            Caption = '0'
+            Color = clWhite
+            Font.Charset = DEFAULT_CHARSET
+            Font.Color = clBlack
+            Font.Height = -11
+            Font.Name = 'MS Sans Serif'
+            Font.Style = []
+            ParentColor = False
+            ParentFont = False
+          end
+          object Label15: TLabel
+            Left = 128
+            Top = 168
+            Width = 27
+            Height = 13
+            Caption = 'Total:'
+            Color = clWhite
+            Font.Charset = DEFAULT_CHARSET
+            Font.Color = clBlack
+            Font.Height = -11
+            Font.Name = 'MS Sans Serif'
+            Font.Style = []
+            ParentColor = False
+            ParentFont = False
+          end
+          object lblHours: TLabel
+            Left = 376
+            Top = 184
+            Width = 8
+            Height = 13
+            Caption = '0'
+            Color = clWhite
+            Font.Charset = DEFAULT_CHARSET
+            Font.Color = clBlack
+            Font.Height = -11
+            Font.Name = 'MS Sans Serif'
+            Font.Style = [fsBold]
+            ParentColor = False
+            ParentFont = False
+          end
+          object Label8: TLabel
+            Left = 296
+            Top = 184
+            Width = 62
+            Height = 13
+            Caption = 'Total (hours):'
+            Color = clWhite
+            Font.Charset = DEFAULT_CHARSET
+            Font.Color = clBlack
+            Font.Height = -11
+            Font.Name = 'MS Sans Serif'
+            Font.Style = []
+            ParentColor = False
+            ParentFont = False
+          end
+          object lbl9S: TLabel
+            Left = 176
+            Top = 104
+            Width = 6
+            Height = 13
+            Caption = '0'
+            Color = clWhite
+            Font.Charset = DEFAULT_CHARSET
+            Font.Color = clBlack
+            Font.Height = -11
+            Font.Name = 'MS Sans Serif'
+            Font.Style = []
+            ParentColor = False
+            ParentFont = False
+          end
+          object lbl10S: TLabel
+            Left = 176
+            Top = 120
+            Width = 6
+            Height = 13
+            Caption = '0'
+            Color = clWhite
+            Font.Charset = DEFAULT_CHARSET
+            Font.Color = clBlack
+            Font.Height = -11
+            Font.Name = 'MS Sans Serif'
+            Font.Style = []
+            ParentColor = False
+            ParentFont = False
+          end
+          object lbl11S: TLabel
+            Left = 176
+            Top = 136
+            Width = 6
+            Height = 13
+            Caption = '0'
+            Color = clWhite
+            Font.Charset = DEFAULT_CHARSET
+            Font.Color = clBlack
+            Font.Height = -11
+            Font.Name = 'MS Sans Serif'
+            Font.Style = []
+            ParentColor = False
+            ParentFont = False
+          end
+          object lbl12S: TLabel
+            Left = 176
+            Top = 152
+            Width = 6
+            Height = 13
+            Caption = '0'
+            Color = clWhite
+            Font.Charset = DEFAULT_CHARSET
+            Font.Color = clBlack
+            Font.Height = -11
+            Font.Name = 'MS Sans Serif'
+            Font.Style = []
+            ParentColor = False
+            ParentFont = False
+          end
+          object lbl8S: TLabel
+            Left = 176
+            Top = 88
+            Width = 6
+            Height = 13
+            Caption = '0'
+            Color = clWhite
+            Font.Charset = DEFAULT_CHARSET
+            Font.Color = clBlack
+            Font.Height = -11
+            Font.Name = 'MS Sans Serif'
+            Font.Style = []
+            ParentColor = False
+            ParentFont = False
+          end
+          object Label6: TLabel
+            Left = 176
+            Top = 72
+            Width = 56
+            Height = 13
+            Caption = 'Nmr of tests'
+            Color = clWhite
+            Font.Charset = DEFAULT_CHARSET
+            Font.Color = clBlack
+            Font.Height = -11
+            Font.Name = 'MS Sans Serif'
+            Font.Style = []
+            ParentColor = False
+            ParentFont = False
+          end
+          object Label10: TLabel
+            Left = 376
+            Top = 72
+            Width = 91
+            Height = 13
+            Caption = 'Total time (minutes)'
+            Color = clWhite
+            Font.Charset = DEFAULT_CHARSET
+            Font.Color = clBlack
+            Font.Height = -11
+            Font.Name = 'MS Sans Serif'
+            Font.Style = []
+            ParentColor = False
+            ParentFont = False
+          end
+          object Label16: TLabel
+            Left = 224
+            Top = 48
+            Width = 32
+            Height = 13
+            Caption = 'Tests'
+            Color = clWhite
+            Font.Charset = DEFAULT_CHARSET
+            Font.Color = clBlack
+            Font.Height = -11
+            Font.Name = 'MS Sans Serif'
+            Font.Style = [fsBold, fsUnderline]
+            ParentColor = False
+            ParentFont = False
+          end
+          object Label13: TLabel
+            Left = 4
+            Top = 8
+            Width = 39
+            Height = 22
+            Caption = 'Stats'
+            Font.Charset = DEFAULT_CHARSET
+            Font.Color = clWindowText
+            Font.Height = -20
+            Font.Name = 'Modern No. 20'
+            Font.Style = []
+            ParentFont = False
+            OnClick = pnlSelectFilesClick
+          end
+          object Shape1: TShape
+            Left = 160
+            Top = 312
+            Width = 281
+            Height = 169
+            Pen.Width = 2
+            Shape = stRoundRect
+          end
+          object Label14: TLabel
+            Left = 184
+            Top = 368
+            Width = 35
+            Height = 13
+            Caption = 'Level 0'
+            Color = clWhite
+            Font.Charset = DEFAULT_CHARSET
+            Font.Color = clBlack
+            Font.Height = -11
+            Font.Name = 'MS Sans Serif'
+            Font.Style = []
+            ParentColor = False
+            ParentFont = False
+          end
+          object Label17: TLabel
+            Left = 184
+            Top = 384
+            Width = 35
+            Height = 13
+            Caption = 'Level 1'
+            Color = clWhite
+            Font.Charset = DEFAULT_CHARSET
+            Font.Color = clBlack
+            Font.Height = -11
+            Font.Name = 'MS Sans Serif'
+            Font.Style = []
+            ParentColor = False
+            ParentFont = False
+          end
+          object lblH1: TLabel
+            Left = 360
+            Top = 384
+            Width = 6
+            Height = 13
+            Caption = '0'
+            Color = clWhite
+            Font.Charset = DEFAULT_CHARSET
+            Font.Color = clBlack
+            Font.Height = -11
+            Font.Name = 'MS Sans Serif'
+            Font.Style = []
+            ParentColor = False
+            ParentFont = False
+          end
+          object Label19: TLabel
+            Left = 184
+            Top = 400
+            Width = 35
+            Height = 13
+            Caption = 'Level 2'
+            Color = clWhite
+            Font.Charset = DEFAULT_CHARSET
+            Font.Color = clBlack
+            Font.Height = -11
+            Font.Name = 'MS Sans Serif'
+            Font.Style = []
+            ParentColor = False
+            ParentFont = False
+          end
+          object lblH2: TLabel
+            Left = 360
+            Top = 400
+            Width = 6
+            Height = 13
+            Caption = '0'
+            Color = clWhite
+            Font.Charset = DEFAULT_CHARSET
+            Font.Color = clBlack
+            Font.Height = -11
+            Font.Name = 'MS Sans Serif'
+            Font.Style = []
+            ParentColor = False
+            ParentFont = False
+          end
+          object Label21: TLabel
+            Left = 184
+            Top = 416
+            Width = 35
+            Height = 13
+            Caption = 'Level 3'
+            Color = clWhite
+            Font.Charset = DEFAULT_CHARSET
+            Font.Color = clBlack
+            Font.Height = -11
+            Font.Name = 'MS Sans Serif'
+            Font.Style = []
+            ParentColor = False
+            ParentFont = False
+          end
+          object lblH3: TLabel
+            Left = 360
+            Top = 416
+            Width = 6
+            Height = 13
+            Caption = '0'
+            Color = clWhite
+            Font.Charset = DEFAULT_CHARSET
+            Font.Color = clBlack
+            Font.Height = -11
+            Font.Name = 'MS Sans Serif'
+            Font.Style = []
+            ParentColor = False
+            ParentFont = False
+          end
+          object lblStotal: TLabel
+            Left = 360
+            Top = 448
+            Width = 8
+            Height = 13
+            Caption = '0'
+            Color = clWhite
+            Font.Charset = DEFAULT_CHARSET
+            Font.Color = clBlack
+            Font.Height = -11
+            Font.Name = 'MS Sans Serif'
+            Font.Style = [fsBold]
+            ParentColor = False
+            ParentFont = False
+          end
+          object lblH0: TLabel
+            Left = 360
+            Top = 368
+            Width = 6
+            Height = 13
+            Caption = '0'
+            Color = clWhite
+            Font.Charset = DEFAULT_CHARSET
+            Font.Color = clBlack
+            Font.Height = -11
+            Font.Name = 'MS Sans Serif'
+            Font.Style = []
+            ParentColor = False
+            ParentFont = False
+          end
+          object Label27: TLabel
+            Left = 328
+            Top = 448
+            Width = 27
+            Height = 13
+            Caption = 'Total:'
+            Color = clWhite
+            Font.Charset = DEFAULT_CHARSET
+            Font.Color = clBlack
+            Font.Height = -11
+            Font.Name = 'MS Sans Serif'
+            Font.Style = []
+            ParentColor = False
+            ParentFont = False
+          end
+          object lblStotalH: TLabel
+            Left = 360
+            Top = 464
+            Width = 8
+            Height = 13
+            Caption = '0'
+            Color = clWhite
+            Font.Charset = DEFAULT_CHARSET
+            Font.Color = clBlack
+            Font.Height = -11
+            Font.Name = 'MS Sans Serif'
+            Font.Style = [fsBold]
+            ParentColor = False
+            ParentFont = False
+          end
+          object Label29: TLabel
+            Left = 296
+            Top = 464
+            Width = 62
+            Height = 13
+            Caption = 'Total (hours):'
+            Color = clWhite
+            Font.Charset = DEFAULT_CHARSET
+            Font.Color = clBlack
+            Font.Height = -11
+            Font.Name = 'MS Sans Serif'
+            Font.Style = []
+            ParentColor = False
+            ParentFont = False
+          end
+          object lblC1: TLabel
+            Left = 272
+            Top = 384
+            Width = 6
+            Height = 13
+            Caption = '0'
+            Color = clWhite
+            Font.Charset = DEFAULT_CHARSET
+            Font.Color = clBlack
+            Font.Height = -11
+            Font.Name = 'MS Sans Serif'
+            Font.Style = []
+            ParentColor = False
+            ParentFont = False
+          end
+          object lblC2: TLabel
+            Left = 272
+            Top = 400
+            Width = 6
+            Height = 13
+            Caption = '0'
+            Color = clWhite
+            Font.Charset = DEFAULT_CHARSET
+            Font.Color = clBlack
+            Font.Height = -11
+            Font.Name = 'MS Sans Serif'
+            Font.Style = []
+            ParentColor = False
+            ParentFont = False
+          end
+          object lblC3: TLabel
+            Left = 272
+            Top = 416
+            Width = 6
+            Height = 13
+            Caption = '0'
+            Color = clWhite
+            Font.Charset = DEFAULT_CHARSET
+            Font.Color = clBlack
+            Font.Height = -11
+            Font.Name = 'MS Sans Serif'
+            Font.Style = []
+            ParentColor = False
+            ParentFont = False
+          end
+          object lblC0: TLabel
+            Left = 272
+            Top = 368
+            Width = 6
+            Height = 13
+            Caption = '0'
+            Color = clWhite
+            Font.Charset = DEFAULT_CHARSET
+            Font.Color = clBlack
+            Font.Height = -11
+            Font.Name = 'MS Sans Serif'
+            Font.Style = []
+            ParentColor = False
+            ParentFont = False
+          end
+          object Label35: TLabel
+            Left = 264
+            Top = 352
+            Width = 28
+            Height = 13
+            Caption = 'Count'
+            Color = clWhite
+            Font.Charset = DEFAULT_CHARSET
+            Font.Color = clBlack
+            Font.Height = -11
+            Font.Name = 'MS Sans Serif'
+            Font.Style = []
+            ParentColor = False
+            ParentFont = False
+          end
+          object Label36: TLabel
+            Left = 328
+            Top = 352
+            Width = 91
+            Height = 13
+            Caption = 'Total time (minutes)'
+            Color = clWhite
+            Font.Charset = DEFAULT_CHARSET
+            Font.Color = clBlack
+            Font.Height = -11
+            Font.Name = 'MS Sans Serif'
+            Font.Style = []
+            ParentColor = False
+            ParentFont = False
+          end
+          object Label37: TLabel
+            Left = 272
+            Top = 320
+            Width = 67
+            Height = 13
+            Caption = 'Supervisors'
+            Color = clWhite
+            Font.Charset = DEFAULT_CHARSET
+            Font.Color = clBlack
+            Font.Height = -11
+            Font.Name = 'MS Sans Serif'
+            Font.Style = [fsBold, fsUnderline]
+            ParentColor = False
+            ParentFont = False
+          end
+          object Shape2: TShape
+            Left = 168
+            Top = 216
+            Width = 265
+            Height = 81
+            Pen.Width = 2
+            Shape = stRoundRect
+          end
+          object Label18: TLabel
+            Left = 192
+            Top = 248
+            Width = 93
+            Height = 13
+            Caption = 'Number of venues: '
+            Color = clWhite
+            Font.Charset = DEFAULT_CHARSET
+            Font.Color = clBlack
+            Font.Height = -11
+            Font.Name = 'MS Sans Serif'
+            Font.Style = []
+            ParentColor = False
+            ParentFont = False
+          end
+          object Label20: TLabel
+            Left = 192
+            Top = 272
+            Width = 136
+            Height = 13
+            Caption = 'Number of seats per session:'
+            Color = clWhite
+            Font.Charset = DEFAULT_CHARSET
+            Font.Color = clBlack
+            Font.Height = -11
+            Font.Name = 'MS Sans Serif'
+            Font.Style = []
+            ParentColor = False
+            ParentFont = False
+          end
+          object lblSeats: TLabel
+            Left = 336
+            Top = 272
+            Width = 6
+            Height = 13
+            Caption = '0'
+            Color = clWhite
+            Font.Charset = DEFAULT_CHARSET
+            Font.Color = clBlack
+            Font.Height = -11
+            Font.Name = 'MS Sans Serif'
+            Font.Style = []
+            ParentColor = False
+            ParentFont = False
+          end
+          object lblVenues: TLabel
+            Left = 288
+            Top = 248
+            Width = 6
+            Height = 13
+            Caption = '0'
+            Color = clWhite
+            Font.Charset = DEFAULT_CHARSET
+            Font.Color = clBlack
+            Font.Height = -11
+            Font.Name = 'MS Sans Serif'
+            Font.Style = []
+            ParentColor = False
+            ParentFont = False
+          end
+          object Label44: TLabel
+            Left = 280
+            Top = 224
+            Width = 43
+            Height = 13
+            Caption = 'Venues'
+            Color = clWhite
+            Font.Charset = DEFAULT_CHARSET
+            Font.Color = clBlack
+            Font.Height = -11
+            Font.Name = 'MS Sans Serif'
+            Font.Style = [fsBold, fsUnderline]
+            ParentColor = False
+            ParentFont = False
+          end
+          object lblTotalTests: TLabel
+            Left = 176
+            Top = 168
+            Width = 8
+            Height = 13
+            Caption = '0'
+            Color = clWhite
+            Font.Charset = DEFAULT_CHARSET
+            Font.Color = clBlack
+            Font.Height = -11
+            Font.Name = 'MS Sans Serif'
+            Font.Style = [fsBold]
+            ParentColor = False
+            ParentFont = False
+          end
+          object lblA9: TLabel
+            Left = 248
+            Top = 104
+            Width = 6
+            Height = 13
+            Caption = '0'
+            Color = clWhite
+            Font.Charset = DEFAULT_CHARSET
+            Font.Color = clBlack
+            Font.Height = -11
+            Font.Name = 'MS Sans Serif'
+            Font.Style = []
+            ParentColor = False
+            ParentFont = False
+          end
+          object lblA10: TLabel
+            Left = 248
+            Top = 120
+            Width = 6
+            Height = 13
+            Caption = '0'
+            Color = clWhite
+            Font.Charset = DEFAULT_CHARSET
+            Font.Color = clBlack
+            Font.Height = -11
+            Font.Name = 'MS Sans Serif'
+            Font.Style = []
+            ParentColor = False
+            ParentFont = False
+          end
+          object lblA11: TLabel
+            Left = 248
+            Top = 136
+            Width = 6
+            Height = 13
+            Caption = '0'
+            Color = clWhite
+            Font.Charset = DEFAULT_CHARSET
+            Font.Color = clBlack
+            Font.Height = -11
+            Font.Name = 'MS Sans Serif'
+            Font.Style = []
+            ParentColor = False
+            ParentFont = False
+          end
+          object lblA12: TLabel
+            Left = 248
+            Top = 152
+            Width = 6
+            Height = 13
+            Caption = '0'
+            Color = clWhite
+            Font.Charset = DEFAULT_CHARSET
+            Font.Color = clBlack
+            Font.Height = -11
+            Font.Name = 'MS Sans Serif'
+            Font.Style = []
+            ParentColor = False
+            ParentFont = False
+          end
+          object lblA8: TLabel
+            Left = 248
+            Top = 88
+            Width = 6
+            Height = 13
+            Caption = '0'
+            Color = clWhite
+            Font.Charset = DEFAULT_CHARSET
+            Font.Color = clBlack
+            Font.Height = -11
+            Font.Name = 'MS Sans Serif'
+            Font.Style = []
+            ParentColor = False
+            ParentFont = False
+          end
+          object Label43: TLabel
+            Left = 248
+            Top = 72
+            Width = 121
+            Height = 13
+            Caption = 'Average students per test'
+            Color = clWhite
+            Font.Charset = DEFAULT_CHARSET
+            Font.Color = clBlack
+            Font.Height = -11
+            Font.Name = 'MS Sans Serif'
+            Font.Style = []
+            ParentColor = False
+            ParentFont = False
+          end
+          object lblATotal: TLabel
+            Left = 248
+            Top = 168
+            Width = 8
+            Height = 13
+            Caption = '0'
+            Color = clWhite
+            Font.Charset = DEFAULT_CHARSET
+            Font.Color = clBlack
+            Font.Height = -11
+            Font.Name = 'MS Sans Serif'
+            Font.Style = [fsBold]
+            ParentColor = False
+            ParentFont = False
+          end
+          object btnRef: TButton
+            Left = 528
+            Top = 8
+            Width = 75
+            Height = 25
+            Caption = 'Refresh stats'
+            TabOrder = 0
+            OnClick = btnRefClick
+          end
+        end
+        object tabTests: TTabSheet
+          Caption = 'View Tests'
+          ImageIndex = 1
+          object Label1: TLabel
+            Left = 4
+            Top = 8
+            Width = 88
+            Height = 22
+            Caption = 'Tests'#39' table'
+            Font.Charset = DEFAULT_CHARSET
+            Font.Color = clWindowText
+            Font.Height = -20
+            Font.Name = 'Modern No. 20'
+            Font.Style = []
+            ParentFont = False
+            OnClick = pnlSelectFilesClick
+          end
+          object sGridTests: TStringGrid
+            Left = 64
+            Top = 48
+            Width = 449
+            Height = 493
+            RowCount = 2
+            Options = [goFixedVertLine, goFixedHorzLine, goVertLine, goHorzLine, goRangeSelect, goDrawFocusSelected]
+            TabOrder = 0
+          end
+        end
+        object tabVenues: TTabSheet
+          Caption = 'View Venues'
+          ImageIndex = 2
+          object Label2: TLabel
+            Left = 4
+            Top = 8
+            Width = 106
+            Height = 22
+            Caption = 'Venues'#39' table'
+            Font.Charset = DEFAULT_CHARSET
+            Font.Color = clWindowText
+            Font.Height = -20
+            Font.Name = 'Modern No. 20'
+            Font.Style = []
+            ParentFont = False
+            OnClick = pnlSelectFilesClick
+          end
+          object sGridVenue: TStringGrid
+            Left = 96
+            Top = 48
+            Width = 345
+            Height = 493
+            ColCount = 4
+            RowCount = 2
+            TabOrder = 0
+          end
+        end
+        object tabSupervisors: TTabSheet
+          Caption = 'View Supervisors'
+          ImageIndex = 3
+          object Label12: TLabel
+            Left = 4
+            Top = 8
+            Width = 141
+            Height = 22
+            Caption = 'Supervisors'#39' table'
+            Font.Charset = DEFAULT_CHARSET
+            Font.Color = clWindowText
+            Font.Height = -20
+            Font.Name = 'Modern No. 20'
+            Font.Style = []
+            ParentFont = False
+            OnClick = pnlSelectFilesClick
+          end
+          object gridS: TStringGrid
+            Left = 32
+            Top = 48
+            Width = 513
+            Height = 493
+            RowCount = 2
+            TabOrder = 0
+          end
+        end
+      end
+    end
+    object btnMaximizeEdit: TButton
+      Left = 0
+      Top = 8
+      Width = 99
+      Height = 25
+      Caption = 'Maximize Editing'
+      TabOrder = 6
+      OnClick = btnMaximizeEditClick
+    end
+    object pnlChoose: TPageControl
+      Left = 16
+      Top = 128
+      Width = 1193
+      Height = 793
+      ActivePage = tabAll
+      Style = tsFlatButtons
+      TabOrder = 4
+      TabWidth = 144
+      object tabTest: TTabSheet
+        Caption = 'Tests setup'
+        object Label38: TLabel
+          Left = 220
+          Top = 16
+          Width = 150
+          Height = 22
+          Caption = 'Viewing by test ID'
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clWindowText
+          Font.Height = -20
+          Font.Name = 'Modern No. 20'
+          Font.Style = []
+          ParentFont = False
+        end
+        object sGridDays: TStringGrid
+          Left = 0
+          Top = 0
+          Width = 1185
+          Height = 762
+          Align = alClient
+          ColCount = 1
+          FixedCols = 0
+          RowCount = 1
+          FixedRows = 0
+          Options = [goFixedVertLine, goFixedHorzLine, goVertLine, goHorzLine, goRangeSelect, goDrawFocusSelected]
+          PopupMenu = popTests
+          TabOrder = 0
+        end
+      end
+      object tabVenue: TTabSheet
+        Caption = 'Venues setup'
+        ImageIndex = 1
+        object Label40: TLabel
+          Left = 220
+          Top = 16
+          Width = 169
+          Height = 22
+          Caption = 'Viewing by venue ID'
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clWindowText
+          Font.Height = -20
+          Font.Name = 'Modern No. 20'
+          Font.Style = []
+          ParentFont = False
+        end
+        object sGridVenues: TStringGrid
+          Left = 0
+          Top = 0
+          Width = 1185
+          Height = 762
+          Align = alClient
+          ColCount = 1
+          FixedCols = 0
+          RowCount = 1
+          FixedRows = 0
+          TabOrder = 0
+        end
+      end
+      object tabSuper: TTabSheet
+        Caption = 'Supervisors setup'
+        ImageIndex = 2
+        object Label39: TLabel
+          Left = 452
+          Top = 8
+          Width = 205
+          Height = 22
+          Caption = 'Viewing by supervisor ID'
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clWindowText
+          Font.Height = -20
+          Font.Name = 'Modern No. 20'
+          Font.Style = []
+          ParentFont = False
+        end
+        object sGridSupervisors: TStringGrid
+          Left = 0
+          Top = 0
+          Width = 1185
+          Height = 762
+          Align = alClient
+          ColCount = 1
+          FixedCols = 0
+          RowCount = 1
+          FixedRows = 0
+          TabOrder = 0
+        end
+      end
+      object tabAll: TTabSheet
+        Caption = 'All'
+        ImageIndex = 3
+        object Label41: TLabel
+          Left = 564
+          Top = 0
+          Width = 93
+          Height = 22
+          Caption = 'Viewing all'
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clWindowText
+          Font.Height = -20
+          Font.Name = 'Modern No. 20'
+          Font.Style = []
+          ParentFont = False
+        end
+        object sGridAll: TStringGrid
+          Left = 0
+          Top = 0
+          Width = 1185
+          Height = 762
+          Align = alClient
+          ColCount = 1
+          FixedCols = 0
+          RowCount = 1
+          FixedRows = 0
+          Options = [goFixedVertLine, goFixedHorzLine, goVertLine, goHorzLine, goDrawFocusSelected]
+          PopupMenu = popAll
+          TabOrder = 0
+          OnClick = sGridAllClick
+        end
+      end
+    end
+    object pnlManual: TPanel
+      Left = 1208
+      Top = 144
+      Width = 57
+      Height = 769
+      Cursor = crHandPoint
+      BorderWidth = 1
+      BorderStyle = bsSingle
+      Color = clSkyBlue
+      DragCursor = crNo
+      TabOrder = 5
+      OnClick = pnlManualClick
+      object Label45: TLabel
+        Left = 164
+        Top = 16
+        Width = 49
+        Height = 22
+        Align = alCustom
+        BiDiMode = bdLeftToRight
+        Caption = 'EDIT'
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clWindowText
+        Font.Height = -20
+        Font.Name = 'Modern No. 20'
+        Font.Style = []
+        ParentBiDiMode = False
+        ParentFont = False
+        OnClick = pnlManualClick
+      end
+      object Label46: TLabel
+        Left = 296
+        Top = 8
+        Width = 95
+        Height = 13
+        Caption = 'Click panel to shrink'
+        OnClick = pnlManualClick
+      end
+      object lbl1: TLabel
+        Left = 24
+        Top = 288
+        Width = 16
+        Height = 13
+        Caption = 'lbl1'
+        OnClick = pnlManualClick
+      end
+      object lbl2: TLabel
+        Left = 20
+        Top = 8
+        Width = 14
+        Height = 22
+        Align = alCustom
+        BiDiMode = bdLeftToRight
+        Caption = 'E'
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clWindowText
+        Font.Height = -20
+        Font.Name = 'Modern No. 20'
+        Font.Style = []
+        ParentBiDiMode = False
+        ParentFont = False
+        OnClick = pnlManualClick
+      end
+      object rdbTest: TRadioButton
+        Left = 56
+        Top = 112
+        Width = 113
+        Height = 17
+        Caption = 'Add test'
+        TabOrder = 0
+        OnClick = rdbTestClick
+      end
+      object rdbSupervisors: TRadioButton
+        Left = 224
+        Top = 112
+        Width = 113
+        Height = 17
+        Caption = 'Add Supervisor'
+        Checked = True
+        TabOrder = 1
+        TabStop = True
+        OnClick = rdbTestClick
+      end
+      object sGridSelect: TStringGrid
+        Left = 16
+        Top = 136
+        Width = 377
+        Height = 617
+        Cursor = crHandPoint
+        RowCount = 1000
+        Options = [goFixedVertLine, goFixedHorzLine, goVertLine, goHorzLine, goRowSelect]
+        TabOrder = 2
+        Visible = False
+        OnClick = sGridSelectDblClick
+        OnDblClick = sGridSelectDblClick
+        RowHeights = (
+          24
+          25
+          24
+          24
+          24
+          24
+          24
+          24
+          24
+          24
+          24
+          24
+          24
+          24
+          24
+          24
+          24
+          24
+          24
+          24
+          24
+          24
+          24
+          24
+          24
+          24
+          24
+          24
+          24
+          24
+          24
+          24
+          24
+          24
+          24
+          24
+          24
+          24
+          24
+          24
+          24
+          24
+          24
+          24
+          24
+          24
+          24
+          24
+          24
+          24
+          24
+          24
+          24
+          24
+          24
+          24
+          24
+          24
+          24
+          24
+          24
+          24
+          24
+          24
+          24
+          24
+          24
+          24
+          24
+          24
+          24
+          24
+          24
+          24
+          24
+          24
+          24
+          24
+          24
+          24
+          24
+          24
+          24
+          24
+          24
+          24
+          24
+          24
+          24
+          24
+          24
+          24
+          24
+          24
+          24
+          24
+          24
+          24
+          24
+          24
+          24
+          24
+          24
+          24
+          24
+          24
+          24
+          24
+          24
+          24
+          24
+          24
+          24
+          24
+          24
+          24
+          24
+          24
+          24
+          24
+          24
+          24
+          24
+          24
+          24
+          24
+          24
+          24
+          24
+          24
+          24
+          24
+          24
+          24
+          24
+          24
+          24
+          24
+          24
+          24
+          24
+          24
+          24
+          24
+          24
+          24
+          24
+          24
+          24
+          24
+          24
+          24
+          24
+          24
+          24
+          24
+          24
+          24
+          24
+          24
+          24
+          24
+          24
+          24
+          24
+          24
+          24
+          24
+          24
+          24
+          24
+          24
+          24
+          24
+          24
+          24
+          24
+          24
+          24
+          24
+          24
+          24
+          24
+          24
+          24
+          24
+          24
+          24
+          24
+          24
+          24
+          24
+          24
+          24
+          24
+          24
+          24
+          24
+          24
+          24
+          24
+          24
+          24
+          24
+          24
+          24
+          24
+          24
+          24
+          24
+          24
+          24
+          24
+          24
+          24
+          24
+          24
+          24
+          24
+          24
+          24
+          24
+          24
+          24
+          24
+          24
+          24
+          24
+          24
+          24
+          24
+          24
+          24
+          24
+          24
+          24
+          24
+          24
+          24
+          24
+          24
+          24
+          24
+          24
+          24
+          24
+          24
+          24
+          24
+          24
+          24
+          24
+          24
+          24
+          24
+          24
+          24
+          24
+          24
+          24
+          24
+          24
+          24
+          24
+          24
+          24
+          24
+          24
+          24
+          24
+          24
+          24
+          24
+          24
+          24
+          24
+          24
+          24
+          24
+          24
+          24
+          24
+          24
+          24
+          24
+          24
+          24
+          24
+          24
+          24
+          24
+          24
+          24
+          24
+          24
+          24
+          24
+          24
+          24
+          24
+          24
+          24
+          24
+          24
+          24
+          24
+          24
+          24
+          24
+          24
+          24
+          24
+          24
+          24
+          24
+          24
+          24
+          24
+          24
+          24
+          24
+          24
+          24
+          24
+          24
+          24
+          24
+          24
+          24
+          24
+          24
+          24
+          24
+          24
+          24
+          24
+          24
+          24
+          24
+          24
+          24
+          24
+          24
+          24
+          24
+          24
+          24
+          24
+          24
+          24
+          24
+          24
+          24
+          24
+          24
+          24
+          24
+          24
+          24
+          24
+          24
+          24
+          24
+          24
+          24
+          24
+          24
+          24
+          24
+          24
+          24
+          24
+          24
+          24
+          24
+          24
+          24
+          24
+          24
+          24
+          24
+          24
+          24
+          24
+          24
+          24
+          24
+          24
+          24
+          24
+          24
+          24
+          24
+          24
+          24
+          24
+          24
+          24
+          24
+          24
+          24
+          24
+          24
+          24
+          24
+          24
+          24
+          24
+          24
+          24
+          24
+          24
+          24
+          24
+          24
+          24
+          24
+          24
+          24
+          24
+          24
+          24
+          24
+          24
+          24
+          24
+          24
+          24
+          24
+          24
+          24
+          24
+          24
+          24
+          24
+          24
+          24
+          24
+          24
+          24
+          24
+          24
+          24
+          24
+          24
+          24
+          24
+          24
+          24
+          24
+          24
+          24
+          24
+          24
+          24
+          24
+          24
+          24
+          24
+          24
+          24
+          24
+          24
+          24
+          24
+          24
+          24
+          24
+          24
+          24
+          24
+          24
+          24
+          24
+          24
+          24
+          24
+          24
+          24
+          24
+          24
+          24
+          24
+          24
+          24
+          24
+          24
+          24
+          24
+          24
+          24
+          24
+          24
+          24
+          24
+          24
+          24
+          24
+          24
+          24
+          24
+          24
+          24
+          24
+          24
+          24
+          24
+          24
+          24
+          24
+          24
+          24
+          24
+          24
+          24
+          24
+          24
+          24
+          24
+          24
+          24
+          24
+          24
+          24
+          24
+          24
+          24
+          24
+          24
+          24
+          24
+          24
+          24
+          24
+          24
+          24
+          24
+          24
+          24
+          24
+          24
+          24
+          24
+          24
+          24
+          24
+          24
+          24
+          24
+          24
+          24
+          24
+          24
+          24
+          24
+          24
+          24
+          24
+          24
+          24
+          24
+          24
+          24
+          24
+          24
+          24
+          24
+          24
+          24
+          24
+          24
+          24
+          24
+          24
+          24
+          24
+          24
+          24
+          24
+          24
+          24
+          24
+          24
+          24
+          24
+          24
+          24
+          24
+          24
+          24
+          24
+          24
+          24
+          24
+          24
+          24
+          24
+          24
+          24
+          24
+          24
+          24
+          24
+          24
+          24
+          24
+          24
+          24
+          24
+          24
+          24
+          24
+          24
+          24
+          24
+          24
+          24
+          24
+          24
+          24
+          24
+          24
+          24
+          24
+          24
+          24
+          24
+          24
+          24
+          24
+          24
+          24
+          24
+          24
+          24
+          24
+          24
+          24
+          24
+          24
+          24
+          24
+          24
+          24
+          24
+          24
+          24
+          24
+          24
+          24
+          24
+          24
+          24
+          24
+          24
+          24
+          24
+          24
+          24
+          24
+          24
+          24
+          24
+          24
+          24
+          24
+          24
+          24
+          24
+          24
+          24
+          24
+          24
+          24
+          24
+          24
+          24
+          24
+          24
+          24
+          24
+          24
+          24
+          24
+          24
+          24
+          24
+          24
+          24
+          24
+          24
+          24
+          24
+          24
+          24
+          24
+          24
+          24
+          24
+          24
+          24
+          24
+          24
+          24
+          24
+          24
+          24
+          24
+          24
+          24
+          24
+          24
+          24
+          24
+          24
+          24
+          24
+          24
+          24
+          24
+          24
+          24
+          24
+          24
+          24
+          24
+          24
+          24
+          24
+          24
+          24
+          24
+          24
+          24
+          24
+          24
+          24
+          24
+          24
+          24
+          24
+          24
+          24
+          24
+          24
+          24
+          24
+          24
+          24
+          24
+          24
+          24
+          24
+          24
+          24
+          24
+          24
+          24
+          24
+          24
+          24
+          24
+          24
+          24
+          24
+          24
+          24
+          24
+          24
+          24
+          24
+          24
+          24
+          24
+          24
+          24
+          24
+          24
+          24
+          24
+          24
+          24
+          24
+          24
+          24
+          24
+          24
+          24
+          24
+          24
+          24
+          24
+          24
+          24
+          24
+          24
+          24
+          24
+          24
+          24
+          24
+          24
+          24
+          24
+          24
+          24
+          24
+          24
+          24
+          24
+          24
+          24
+          24
+          24
+          24
+          24
+          24
+          24
+          24
+          24
+          24
+          24
+          24
+          24
+          24
+          24
+          24
+          24
+          24
+          24
+          24
+          24
+          24
+          24
+          24
+          24
+          24
+          24
+          24
+          24
+          24
+          24
+          24
+          24
+          24
+          24
+          24
+          24
+          24
+          24
+          24
+          24
+          24
+          24
+          24
+          24
+          24
+          24
+          24
+          24
+          24
+          24
+          24
+          24
+          24
+          24
+          24
+          24
+          24
+          24
+          24
+          24
+          24
+          24
+          24
+          24
+          24
+          24
+          24
+          24
+          24
+          24
+          24
+          24
+          24
+          24
+          24
+          24
+          24
+          24
+          24
+          24
+          24
+          24
+          24
+          24
+          24
+          24
+          24
+          24
+          24
+          24
+          24
+          24
+          24
+          24
+          24
+          24
+          24
+          24
+          24
+          24
+          24
+          24
+          24
+          24
+          24
+          24
+          24
+          24
+          24
+          24
+          24
+          24
+          24
+          24
+          24
+          24
+          24
+          24
+          24
+          24
+          24
+          24
+          24
+          24
+          24
+          24
+          24
+          24
+          24
+          24
+          24
+          24
+          24
+          24
+          24
+          24
+          24
+          24
+          24
+          24
+          24
+          24
+          24
+          24
+          24
+          24
+          24
+          24
+          24
+          24
+          24
+          24
+          24
+          24
+          24
+          24
+          24
+          24
+          24
+          24
+          24
+          24
+          24
+          24
+          24
+          24
+          24
+          24
+          24
+          24
+          24
+          24
+          24
+          24
+          24
+          24
+          24
+          24
+          24
+          24
+          24
+          24
+          24
+          24
+          24
+          24
+          24
+          24)
+      end
+      object Panel1: TPanel
+        Left = 16
+        Top = 48
+        Width = 377
+        Height = 57
+        Color = clActiveCaption
+        TabOrder = 3
+        Visible = False
+        object lblSession: TLabel
+          Left = 195
+          Top = 28
+          Width = 6
+          Height = 13
+          Caption = '0'
+        end
+        object Label48: TLabel
+          Left = 152
+          Top = 28
+          Width = 37
+          Height = 13
+          Caption = 'Session'
+        end
+        object Label55: TLabel
+          Left = 32
+          Top = 28
+          Width = 19
+          Height = 13
+          Caption = 'Day'
+        end
+        object lblDay: TLabel
+          Left = 67
+          Top = 28
+          Width = 6
+          Height = 13
+          Caption = '0'
+        end
+        object lblVenue: TLabel
+          Left = 323
+          Top = 28
+          Width = 6
+          Height = 13
+          Caption = '0'
+        end
+        object Label58: TLabel
+          Left = 280
+          Top = 28
+          Width = 31
+          Height = 13
+          Caption = 'Venue'
+        end
+        object Label49: TLabel
+          Left = 136
+          Top = 8
+          Width = 102
+          Height = 13
+          Caption = 'Field being edited'
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clWindowText
+          Font.Height = -11
+          Font.Name = 'MS Sans Serif'
+          Font.Style = [fsBold]
+          ParentFont = False
+        end
+      end
+    end
+    object rgpDays: TRadioGroup
+      Left = 16
+      Top = 56
+      Width = 1249
+      Height = 73
+      Caption = 'Choose day to view'
+      Columns = 10
+      TabOrder = 0
+      OnClick = rgpDaysClick
+    end
+  end
+  object tmrexpand: TTimer
+    Enabled = False
+    Interval = 1
+    OnTimer = tmrexpandTimer
+    Left = 48
+    Top = 96
+  end
+  object tmrShrink: TTimer
+    Enabled = False
+    Interval = 1
+    OnTimer = tmrShrinkTimer
+    Left = 8
+    Top = 96
+  end
+  object tmr2S: TTimer
+    Enabled = False
+    Interval = 1
+    OnTimer = tmr2STimer
+    Left = 8
+    Top = 144
+  end
+  object tmr2E: TTimer
+    Enabled = False
+    Interval = 1
+    OnTimer = tmr2ETimer
+    Left = 48
+    Top = 144
+  end
+  object tmrClose: TTimer
+    Enabled = False
+    Interval = 1
+    OnTimer = tmrCloseTimer
+    Left = 648
+    Top = 496
+  end
+  object tmrOpen: TTimer
+    Enabled = False
+    Interval = 1
+    OnTimer = tmrOpenTimer
+    Left = 624
+    Top = 496
+  end
+  object popTests: TPopupMenu
+    Left = 644
+    Top = 123
+    object Addtest1: TMenuItem
+      Caption = 'Add test'
+      OnClick = Addtest1Click
+    end
+    object Removetest1: TMenuItem
+      Caption = 'Remove test'
+    end
+  end
+  object popAll: TPopupMenu
+    Left = 4
+    Top = 171
+    object Add1: TMenuItem
+      Caption = 'Add test'
+      OnClick = Add1Click
+    end
+    object AddSupervisor1: TMenuItem
+      Caption = 'Add Supervisor'
+      OnClick = AddSupervisor1Click
+    end
+  end
+end

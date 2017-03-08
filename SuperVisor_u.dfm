@@ -1,0 +1,858 @@
+object frmSupervisor: TfrmSupervisor
+  Left = 110
+  Top = 334
+  Width = 1218
+  Height = 682
+  Caption = 'Setup Supervisors'
+  Color = clBtnFace
+  Font.Charset = DEFAULT_CHARSET
+  Font.Color = clWindowText
+  Font.Height = -11
+  Font.Name = 'MS Sans Serif'
+  Font.Style = []
+  OldCreateOrder = False
+  OnActivate = FormActivate
+  PixelsPerInch = 96
+  TextHeight = 13
+  object pnlSuper: TPanel
+    Left = 0
+    Top = 0
+    Width = 1201
+    Height = 641
+    Caption = 'pnlSuper'
+    Color = clActiveCaption
+    TabOrder = 0
+    object Label41: TLabel
+      Left = 364
+      Top = 24
+      Width = 277
+      Height = 41
+      Caption = 'Setup supervisors'
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = clWindowText
+      Font.Height = -40
+      Font.Name = 'Modern No. 20'
+      Font.Style = []
+      ParentFont = False
+    end
+    object Label43: TLabel
+      Left = 875
+      Top = 232
+      Width = 168
+      Height = 22
+      Caption = 'Setup hours function'
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = clWindowText
+      Font.Height = -20
+      Font.Name = 'Modern No. 20'
+      Font.Style = []
+      ParentFont = False
+    end
+    object btnMaximize: TButton
+      Left = 928
+      Top = 416
+      Width = 75
+      Height = 25
+      Caption = 'Setup hours'
+      TabOrder = 8
+      OnClick = btnMaximizeClick
+    end
+    object gridS: TStringGrid
+      Left = 200
+      Top = 112
+      Width = 513
+      Height = 513
+      RowCount = 2
+      Options = [goFixedVertLine, goFixedHorzLine, goVertLine, goHorzLine, goRangeSelect, goEditing]
+      TabOrder = 0
+      OnKeyUp = gridSKeyUp
+    end
+    object btnSort: TButton
+      Left = 384
+      Top = 80
+      Width = 97
+      Height = 25
+      Caption = 'Sort by surname'
+      TabOrder = 1
+      OnClick = btnSortClick
+    end
+    object btnSave: TButton
+      Left = 616
+      Top = 80
+      Width = 97
+      Height = 25
+      Caption = 'Save to textfile'
+      TabOrder = 2
+      OnClick = btnSaveClick
+    end
+    object btnNumber: TButton
+      Left = 296
+      Top = 80
+      Width = 81
+      Height = 25
+      Caption = 'Re number'
+      TabOrder = 3
+      OnClick = btnNumberClick
+    end
+    object btnCheck: TButton
+      Left = 512
+      Top = 80
+      Width = 97
+      Height = 25
+      Caption = 'Check table'
+      TabOrder = 4
+      OnClick = btnCheckClick
+    end
+    object pnlLoad: TPanel
+      Left = 8
+      Top = 112
+      Width = 185
+      Height = 345
+      Color = clSkyBlue
+      TabOrder = 5
+      object Label42: TLabel
+        Left = 36
+        Top = 8
+        Width = 118
+        Height = 22
+        Caption = 'Load from file'
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clWindowText
+        Font.Height = -20
+        Font.Name = 'Modern No. 20'
+        Font.Style = []
+        ParentFont = False
+      end
+      object rgpLoad: TRadioGroup
+        Left = 8
+        Top = 40
+        Width = 169
+        Height = 265
+        Caption = 'Available files'
+        TabOrder = 0
+      end
+      object btnRefresh: TButton
+        Left = 8
+        Top = 312
+        Width = 57
+        Height = 25
+        Caption = 'Refresh'
+        TabOrder = 1
+        OnClick = btnRefreshClick
+      end
+      object btnLoad: TButton
+        Left = 80
+        Top = 312
+        Width = 97
+        Height = 25
+        Caption = 'Load'
+        TabOrder = 2
+        OnClick = btnLoadClick
+      end
+    end
+    object pnlDelete: TPanel
+      Left = 8
+      Top = 464
+      Width = 185
+      Height = 161
+      Color = clSkyBlue
+      TabOrder = 6
+      object Label2: TLabel
+        Left = 24
+        Top = 48
+        Width = 17
+        Height = 13
+        Caption = 'ID: '
+      end
+      object Label1: TLabel
+        Left = 36
+        Top = 8
+        Width = 107
+        Height = 22
+        Caption = 'Delete record'
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clWindowText
+        Font.Height = -20
+        Font.Name = 'Modern No. 20'
+        Font.Style = []
+        ParentFont = False
+      end
+      object btnDelete: TButton
+        Left = 56
+        Top = 96
+        Width = 75
+        Height = 25
+        Caption = 'Delete'
+        TabOrder = 0
+        OnClick = btnDeleteClick
+      end
+      object nmrDelete: TSpinEdit
+        Left = 56
+        Top = 48
+        Width = 121
+        Height = 22
+        MaxValue = 0
+        MinValue = 0
+        TabOrder = 1
+        Value = 0
+      end
+    end
+    object btnNew: TButton
+      Left = 200
+      Top = 80
+      Width = 75
+      Height = 25
+      Caption = 'New table'
+      TabOrder = 9
+      OnClick = btnNewClick
+    end
+    object Memo1: TMemo
+      Left = 752
+      Top = 256
+      Width = 417
+      Height = 153
+      BevelInner = bvNone
+      BevelOuter = bvNone
+      BorderStyle = bsNone
+      Color = clActiveCaption
+      Lines.Strings = (
+        
+          'This function allows you to calculate the number of supervising ' +
+          'hours each emplyee has '
+        
+          'to complete. The hours of each supervisor can vary according to ' +
+          'it'#39's level.'
+        ''
+        
+          'There are two ways in calculating these hour-difference in level' +
+          's:'
+        ''
+        
+          'The first is to manually assign the number of hours to each leve' +
+          'l. This will require you to '
+        
+          'do a few calculations to make sure you get close to the total ho' +
+          'urs needed.'
+        ''
+        
+          'The second is to assign each level a percentage out of 100. The ' +
+          'program will then '
+        
+          'calculate the hours each level has to do based on the number of ' +
+          'employees of each '
+        'level corresponding to it'#39's level'#39's percentage.')
+      TabOrder = 10
+    end
+    object pnlHours: TPanel
+      Left = 728
+      Top = 104
+      Width = 457
+      Height = 513
+      BevelOuter = bvSpace
+      BorderWidth = 10
+      BorderStyle = bsSingle
+      Color = clSkyBlue
+      TabOrder = 7
+      Visible = False
+      object shp1: TShape
+        Left = 16
+        Top = 120
+        Width = 209
+        Height = 161
+        Brush.Color = clBtnFace
+        Pen.Color = clLime
+        Pen.Width = 2
+      end
+      object shp2: TShape
+        Left = 232
+        Top = 120
+        Width = 209
+        Height = 161
+        Brush.Color = clBtnFace
+        Pen.Color = clLime
+        Pen.Style = psClear
+        Pen.Width = 2
+      end
+      object Shape1: TShape
+        Left = 128
+        Top = 336
+        Width = 209
+        Height = 161
+        Brush.Color = clBtnFace
+      end
+      object Label3: TLabel
+        Left = 40
+        Top = 160
+        Width = 6
+        Height = 13
+        Caption = '0'
+        Color = clBtnFace
+        ParentColor = False
+      end
+      object Label4: TLabel
+        Left = 40
+        Top = 184
+        Width = 6
+        Height = 13
+        Caption = '1'
+        Color = clBtnFace
+        ParentColor = False
+      end
+      object Label5: TLabel
+        Left = 40
+        Top = 208
+        Width = 6
+        Height = 13
+        Caption = '2'
+        Color = clBtnFace
+        ParentColor = False
+      end
+      object Label6: TLabel
+        Left = 40
+        Top = 232
+        Width = 6
+        Height = 13
+        Caption = '3'
+        Color = clBtnFace
+        ParentColor = False
+      end
+      object Label7: TLabel
+        Left = 192
+        Top = 160
+        Width = 8
+        Height = 13
+        Caption = '%'
+        Color = clBtnFace
+        ParentColor = False
+      end
+      object Label8: TLabel
+        Left = 192
+        Top = 184
+        Width = 8
+        Height = 13
+        Caption = '%'
+        Color = clBtnFace
+        ParentColor = False
+      end
+      object Label9: TLabel
+        Left = 192
+        Top = 208
+        Width = 8
+        Height = 13
+        Caption = '%'
+        Color = clBtnFace
+        ParentColor = False
+      end
+      object Label10: TLabel
+        Left = 192
+        Top = 232
+        Width = 8
+        Height = 13
+        Caption = '%'
+        Color = clBtnFace
+        ParentColor = False
+      end
+      object lblPerc: TLabel
+        Left = 168
+        Top = 264
+        Width = 6
+        Height = 13
+        Caption = '0'
+        Color = clBtnFace
+        ParentColor = False
+      end
+      object Label11: TLabel
+        Left = 192
+        Top = 264
+        Width = 8
+        Height = 13
+        Caption = '%'
+        Color = clBtnFace
+        ParentColor = False
+      end
+      object Label12: TLabel
+        Left = 80
+        Top = 264
+        Width = 84
+        Height = 13
+        Caption = 'Total percentage:'
+        Color = clBtnFace
+        ParentColor = False
+      end
+      object Label13: TLabel
+        Left = 136
+        Top = 448
+        Width = 6
+        Height = 13
+        Caption = '3'
+        Color = clBtnFace
+        ParentColor = False
+      end
+      object Label14: TLabel
+        Left = 136
+        Top = 424
+        Width = 6
+        Height = 13
+        Caption = '2'
+        Color = clBtnFace
+        ParentColor = False
+      end
+      object Label15: TLabel
+        Left = 136
+        Top = 400
+        Width = 6
+        Height = 13
+        Caption = '1'
+        Color = clBtnFace
+        ParentColor = False
+      end
+      object Label16: TLabel
+        Left = 136
+        Top = 376
+        Width = 6
+        Height = 13
+        Caption = '0'
+        Color = clBtnFace
+        ParentColor = False
+      end
+      object Label17: TLabel
+        Left = 288
+        Top = 376
+        Width = 26
+        Height = 13
+        Caption = 'hours'
+        Color = clBtnFace
+        ParentColor = False
+      end
+      object Label18: TLabel
+        Left = 288
+        Top = 400
+        Width = 26
+        Height = 13
+        Caption = 'hours'
+        Color = clBtnFace
+        ParentColor = False
+      end
+      object Label19: TLabel
+        Left = 288
+        Top = 424
+        Width = 26
+        Height = 13
+        Caption = 'hours'
+        Color = clBtnFace
+        ParentColor = False
+      end
+      object Label20: TLabel
+        Left = 288
+        Top = 448
+        Width = 26
+        Height = 13
+        Caption = 'hours'
+        Color = clBtnFace
+        ParentColor = False
+      end
+      object lblHours: TLabel
+        Left = 240
+        Top = 480
+        Width = 6
+        Height = 13
+        Caption = '0'
+        Color = clBtnFace
+        ParentColor = False
+      end
+      object Label22: TLabel
+        Left = 184
+        Top = 480
+        Width = 56
+        Height = 13
+        Caption = 'Total hours:'
+        Color = clBtnFace
+        ParentColor = False
+      end
+      object Label23: TLabel
+        Left = 288
+        Top = 480
+        Width = 26
+        Height = 13
+        Caption = 'hours'
+        Color = clBtnFace
+        ParentColor = False
+      end
+      object Label21: TLabel
+        Left = 56
+        Top = 48
+        Width = 56
+        Height = 13
+        Caption = 'Total hours:'
+      end
+      object Label24: TLabel
+        Left = 240
+        Top = 160
+        Width = 6
+        Height = 13
+        Caption = '0'
+        Color = clBtnFace
+        ParentColor = False
+      end
+      object Label25: TLabel
+        Left = 240
+        Top = 184
+        Width = 6
+        Height = 13
+        Caption = '1'
+        Color = clBtnFace
+        ParentColor = False
+      end
+      object Label26: TLabel
+        Left = 240
+        Top = 208
+        Width = 6
+        Height = 13
+        Caption = '2'
+        Color = clBtnFace
+        ParentColor = False
+      end
+      object Label27: TLabel
+        Left = 240
+        Top = 232
+        Width = 6
+        Height = 13
+        Caption = '3'
+        Color = clBtnFace
+        ParentColor = False
+      end
+      object Label28: TLabel
+        Left = 288
+        Top = 264
+        Width = 56
+        Height = 13
+        Caption = 'Total hours:'
+        Color = clBtnFace
+        ParentColor = False
+      end
+      object lblPerHours: TLabel
+        Left = 344
+        Top = 264
+        Width = 6
+        Height = 13
+        Caption = '0'
+        Color = clBtnFace
+        ParentColor = False
+      end
+      object Label30: TLabel
+        Left = 392
+        Top = 264
+        Width = 26
+        Height = 13
+        Caption = 'hours'
+        Color = clBtnFace
+        ParentColor = False
+      end
+      object Label31: TLabel
+        Left = 392
+        Top = 232
+        Width = 26
+        Height = 13
+        Caption = 'hours'
+        Color = clBtnFace
+        ParentColor = False
+      end
+      object Label32: TLabel
+        Left = 392
+        Top = 208
+        Width = 26
+        Height = 13
+        Caption = 'hours'
+        Color = clBtnFace
+        ParentColor = False
+      end
+      object Label33: TLabel
+        Left = 392
+        Top = 184
+        Width = 26
+        Height = 13
+        Caption = 'hours'
+        Color = clBtnFace
+        ParentColor = False
+      end
+      object Label34: TLabel
+        Left = 392
+        Top = 160
+        Width = 26
+        Height = 13
+        Caption = 'hours'
+        Color = clBtnFace
+        ParentColor = False
+      end
+      object Label29: TLabel
+        Left = 168
+        Top = 352
+        Width = 113
+        Height = 13
+        Caption = 'Stats of total level hours'
+        Color = clBtnFace
+        ParentColor = False
+      end
+      object Label35: TLabel
+        Left = 248
+        Top = 128
+        Width = 158
+        Height = 13
+        Caption = 'Calculate hours by entering each '
+        Color = clBtnFace
+        ParentColor = False
+      end
+      object Label36: TLabel
+        Left = 280
+        Top = 144
+        Width = 90
+        Height = 13
+        Caption = 'level'#39's indivual time'
+        Color = clBtnFace
+        ParentColor = False
+      end
+      object Label37: TLabel
+        Left = 48
+        Top = 128
+        Width = 149
+        Height = 13
+        Caption = 'Calculate hours by entering the '
+        Color = clBtnFace
+        ParentColor = False
+      end
+      object Label38: TLabel
+        Left = 48
+        Top = 144
+        Width = 152
+        Height = 13
+        Caption = 'percentage of time of each level'
+        Color = clBtnFace
+        ParentColor = False
+      end
+      object Label39: TLabel
+        Left = 208
+        Top = 80
+        Width = 27
+        Height = 22
+        Caption = 'OR'
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clWindowText
+        Font.Height = -20
+        Font.Name = 'Modern No. 20'
+        Font.Style = []
+        ParentFont = False
+      end
+      object Label40: TLabel
+        Left = 56
+        Top = 16
+        Width = 365
+        Height = 22
+        Caption = 'Setup the hours of the supervisors in the table'
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clWindowText
+        Font.Height = -20
+        Font.Name = 'Modern No. 20'
+        Font.Style = []
+        ParentFont = False
+      end
+      object btnCalcHours: TButton
+        Left = 184
+        Top = 296
+        Width = 89
+        Height = 25
+        Caption = 'Calculate hours'
+        TabOrder = 0
+        OnClick = btnCalcHoursClick
+      end
+      object spinTotalHours: TSpinEdit
+        Left = 120
+        Top = 48
+        Width = 121
+        Height = 22
+        MaxValue = 0
+        MinValue = 0
+        TabOrder = 1
+        Value = 300
+      end
+      object spin0: TEdit
+        Left = 64
+        Top = 160
+        Width = 121
+        Height = 21
+        TabOrder = 2
+        Text = '50'
+        OnKeyUp = spin0KeyUp
+      end
+      object spin1: TEdit
+        Left = 64
+        Top = 184
+        Width = 121
+        Height = 21
+        TabOrder = 3
+        Text = '30'
+        OnKeyUp = spin0KeyUp
+      end
+      object spin2: TEdit
+        Left = 64
+        Top = 208
+        Width = 121
+        Height = 21
+        TabOrder = 4
+        Text = '15'
+        OnKeyUp = spin0KeyUp
+      end
+      object spin3: TEdit
+        Left = 64
+        Top = 232
+        Width = 121
+        Height = 21
+        TabOrder = 5
+        Text = '5'
+        OnKeyUp = spin0KeyUp
+      end
+      object edtHour0: TEdit
+        Left = 160
+        Top = 376
+        Width = 121
+        Height = 21
+        Enabled = False
+        TabOrder = 6
+        Text = '0'
+        OnKeyUp = spin0KeyUp
+      end
+      object edtHour1: TEdit
+        Left = 160
+        Top = 400
+        Width = 121
+        Height = 21
+        Enabled = False
+        TabOrder = 7
+        Text = '0'
+        OnKeyUp = spin0KeyUp
+      end
+      object edtHour2: TEdit
+        Left = 160
+        Top = 424
+        Width = 121
+        Height = 21
+        Enabled = False
+        TabOrder = 8
+        Text = '0'
+        OnKeyUp = spin0KeyUp
+      end
+      object edtHour3: TEdit
+        Left = 160
+        Top = 448
+        Width = 121
+        Height = 21
+        Enabled = False
+        TabOrder = 9
+        Text = '0'
+        OnKeyUp = spin0KeyUp
+      end
+      object btnAutoHours: TButton
+        Left = 16
+        Top = 16
+        Width = 97
+        Height = 25
+        Caption = 'Calculate hours'
+        TabOrder = 10
+        Visible = False
+        OnClick = btnAutoHoursClick
+      end
+      object rgpPerc: TRadioButton
+        Left = 72
+        Top = 88
+        Width = 129
+        Height = 17
+        Caption = 'Percentage per level'
+        Checked = True
+        TabOrder = 11
+        TabStop = True
+        OnClick = rgpPercClick
+      end
+      object rgpHour: TRadioButton
+        Left = 264
+        Top = 88
+        Width = 113
+        Height = 17
+        Caption = 'Hours per level'
+        TabOrder = 12
+        OnClick = rgpPercClick
+      end
+      object edtPhour0: TEdit
+        Left = 264
+        Top = 160
+        Width = 121
+        Height = 21
+        Enabled = False
+        TabOrder = 13
+        Text = '0'
+        OnKeyUp = spin0KeyUp
+      end
+      object edtPhour1: TEdit
+        Left = 264
+        Top = 184
+        Width = 121
+        Height = 21
+        Enabled = False
+        TabOrder = 14
+        Text = '0'
+        OnKeyUp = spin0KeyUp
+      end
+      object edtPhour2: TEdit
+        Left = 264
+        Top = 208
+        Width = 121
+        Height = 21
+        Enabled = False
+        TabOrder = 15
+        Text = '0'
+        OnKeyUp = spin0KeyUp
+      end
+      object edtPhour3: TEdit
+        Left = 264
+        Top = 232
+        Width = 121
+        Height = 21
+        Enabled = False
+        TabOrder = 16
+        Text = '0'
+        OnKeyUp = spin0KeyUp
+      end
+      object btn2: TButton
+        Left = 16
+        Top = 56
+        Width = 89
+        Height = 25
+        Caption = 'Calc from hours'
+        TabOrder = 17
+        Visible = False
+        OnClick = btn2Click
+      end
+      object btnMinimize: TButton
+        Left = 368
+        Top = 472
+        Width = 75
+        Height = 25
+        Caption = 'Minimize'
+        TabOrder = 18
+        OnClick = btnMaximizeClick
+      end
+      object btnGetTotalHours: TButton
+        Left = 264
+        Top = 48
+        Width = 161
+        Height = 25
+        Caption = 'Get total hours by loading files'
+        TabOrder = 19
+        OnClick = btnGetTotalHoursClick
+      end
+    end
+  end
+  object dlgOpenTest: TOpenDialog
+    Filter = 'Test file|*.tst|Venue file|*.ven'
+    Left = 24
+    Top = 16
+  end
+end

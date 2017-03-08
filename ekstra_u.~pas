@@ -1,0 +1,156 @@
+unit ekstra_u;
+
+interface
+
+uses
+  Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
+  Dialogs, Grids, DBGrids, DB, ADODB, StdCtrls, ComCtrls;
+
+type
+    TMDarray = array[1..50,1..10,1..50,1..5] of integer;
+
+
+
+
+type
+  ekstra = class
+  private
+    { Private declarations }
+  public
+    function isNumber(sNumber: string):boolean;
+    procedure FindAll(const Path: String;Attr: Integer;List: TStrings);
+  end;
+
+implementation
+///////
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+function ekstra.isNumber(sNumber: string):boolean;
+var
+  icheck: integer;
+  rNumber: double;
+begin
+    val(sNumber,rNumber,icheck);
+    if icheck = 0 then isNumber:=true
+    else isNumber:=false;
+end;
+
+
+procedure ekstra.FindAll(const Path: String;Attr: Integer;List: TStrings) ;
+var
+   Res: TSearchRec;
+   EOFound: Boolean;
+begin
+   EOFound:= False;
+   if FindFirst(Path, Attr, Res) < 0 then
+     exit
+   else
+     while not EOFound do begin
+       List.Add(Res.Name) ;
+       EOFound:= FindNext(Res) <> 0;
+     end;
+   FindClose(Res) ;
+end;
+/////////////
+
+{procedure ekstra.SaveRedx(RedX:TRichEdit;sFileName:string);
+var
+MyLer:TextFile;
+a:integer;
+sLyn:string;
+begin
+  sFileName:=sFileName+'.txt';
+  AssignFile(MyLer,sFileName);
+  Rewrite(Myler);
+  for a:=0 to redX.Lines.Count do begin
+    sLyn:=RedX.Lines.Strings[a];
+    Writeln(myler,sLyn);
+  end;
+  CloseFile(Myler);
+end; }
+
+{procedure ekstra.SetupColumns(dbGrid: TDBgrid; columns: array of string;edtCaseNumber:TEdit; ADO: TADOQuery;RedX:TRichEdit);
+var
+a:integer;
+sColumns,sTable,sColumn,sCase,sConnection,sWhere,sFrom:string;
+begin
+  sConnection:='';
+  if length(edtCaseNumber.Text)>0 then
+  begin
+  sConnection:='SELECT ';
+  sCase:=edtCaseNumber.Text;
+  while isnumeric(sColumns)=false do
+  sColumns:=inputbox('Column count','How many columns do you want to use?','');
+  for a:=0 to strtoint(sColumns)-1 do
+  begin
+    dbgrid.Columns.Add;
+    sTable:=inputbox(intToStr(a+1)+'/'+intToStr(strtoint(sColumns))+
+    '   TABLE','Insert the table''s name','');
+    sColumn:=inputbox((intToStr(a+1))+'/'+intToStr(strtoint(sColumns))+
+    '   COLUMN','Insert the column''s name','');
+    dbgrid.Columns.Items[a].FieldName:=sTable+'.'+sColumn;
+    dbgrid.Columns.Items[a].Width:=100;
+    columns[a]:=sTable+'.'+sColumn;
+    if strtoint(sColumns)=1 then begin
+    //AS DAAR NET EEN KOLOM IS
+        sConnection:=sConnection+sTable+'.'+sColumn;
+        sConnection:=sConnection+' FROM '+sTable+' WHERE '+sColumn+
+        '="'+sCase+'"';
+       // dbGrid.Columns.Delete(0);
+      end
+    //LAASTE KOLOM
+    else if a=strtoint(sColumns)-1 then
+    begin
+      sConnection:=sConnection+','+sTable+'.'+sColumn;
+      sFrom:=sFrom+','+sTable;
+      sWhere:=sWhere+'='+sTable+'.casenumber';
+      sWhere:=sWhere+' AND '+sTable+'.casenumber="'+sCase+'"';
+      sConnection:=sConnection+' FROM '+sFrom+' WHERE '+sWhere;
+    end
+    //EERSTE KOLOM
+    else if a=0 then
+    begin
+      sConnection:=sConnection+sTable+'.'+sColumn;
+      sFrom:=sTable;
+      sWhere:=sTable+'.casenumber';
+    end
+    //MIDDEL KOLOMME
+    else begin
+      sConnection:=sConnection+','+sTable+'.'+sColumn;
+      sFrom:=sFrom+','+sTable;
+      sWhere:=sWhere+'='+sTable+'.casenumber';
+    end;
+  end;
+  redX.Lines.Add(sConnection);
+  end else messagedlg('Please enter the casenumber',mtInformation,[mbOK],0);
+
+end;  }
+
+//Setup the Form to the screenSize.
+{procedure ekstra.FixScreenResulution(Form1: TForm);
+   var
+   screenWidth,screenHeight: integer;
+   begin
+      screenHeight := GetSystemMetrics(SM_CYSCREEN);
+      ScreenWidth := GetSystemMetrics(SM_CXSCREEN);
+      Form1.Height:= screenHeight;
+      Form1.Width:= screenWidth;
+      Form1.Top:=0;
+      Form1.Left:=0;
+   end;
+}
+//////////////////END///////////////////////////////END//////////////////////////
+
+end.

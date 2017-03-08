@@ -1,0 +1,1164 @@
+unit final_u;
+
+interface
+
+uses
+  Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
+  Dialogs, ComCtrls, StdCtrls, ExtCtrls, Grids, ekstra_u, math, Spin, cal_u,
+  Gauges, Menus;
+
+type
+  TfrmFinal = class(TForm)
+    page: TPageControl;
+    tabTests: TTabSheet;
+    tabVenues: TTabSheet;
+    tabSupervisors: TTabSheet;
+    gridS: TStringGrid;
+    sGridVenue: TStringGrid;
+    sGridTests: TStringGrid;
+    pnlSelectFiles: TPanel;
+    rgpLoadTests: TRadioGroup;
+    rgpLoadVenues: TRadioGroup;
+    rgpLoadSupervisors: TRadioGroup;
+    Label3: TLabel;
+    btnLoad: TButton;
+    Button2: TButton;
+    Button4: TButton;
+    Button5: TButton;
+    btnLoadAll: TButton;
+    lblexpand: TLabel;
+    tmrexpand: TTimer;
+    tmrShrink: TTimer;
+    Label1: TLabel;
+    Label2: TLabel;
+    Label12: TLabel;
+    tabStats: TTabSheet;
+    shp1: TShape;
+    Label4: TLabel;
+    Label5: TLabel;
+    lbl9: TLabel;
+    Label7: TLabel;
+    lbl10: TLabel;
+    Label9: TLabel;
+    lbl11: TLabel;
+    Label11: TLabel;
+    lbl12: TLabel;
+    lblTotal: TLabel;
+    lbl8: TLabel;
+    Label15: TLabel;
+    lblHours: TLabel;
+    Label8: TLabel;
+    lbl9S: TLabel;
+    lbl10S: TLabel;
+    lbl11S: TLabel;
+    lbl12S: TLabel;
+    lbl8S: TLabel;
+    Label6: TLabel;
+    Label10: TLabel;
+    Label16: TLabel;
+    Label13: TLabel;
+    Shape1: TShape;
+    Label14: TLabel;
+    Label17: TLabel;
+    lblH1: TLabel;
+    Label19: TLabel;
+    lblH2: TLabel;
+    Label21: TLabel;
+    lblH3: TLabel;
+    lblStotal: TLabel;
+    lblH0: TLabel;
+    Label27: TLabel;
+    lblStotalH: TLabel;
+    Label29: TLabel;
+    lblC1: TLabel;
+    lblC2: TLabel;
+    lblC3: TLabel;
+    lblC0: TLabel;
+    Label35: TLabel;
+    Label36: TLabel;
+    Label37: TLabel;
+    Shape2: TShape;
+    Label18: TLabel;
+    Label20: TLabel;
+    lblSeats: TLabel;
+    lblVenues: TLabel;
+    Label44: TLabel;
+    btnRef: TButton;
+    pnlReview: TPanel;
+    Label22: TLabel;
+    lblReview: TLabel;
+    tmr2S: TTimer;
+    tmr2E: TTimer;
+    Label23: TLabel;
+    pnlDays: TPanel;
+    Label24: TLabel;
+    Label25: TLabel;
+    Label26: TLabel;
+    Label28: TLabel;
+    edtDays: TSpinEdit;
+    edtSessions: TSpinEdit;
+    edtHours: TSpinEdit;
+    Label32: TLabel;
+    btnLoadSettings: TButton;
+    Label33: TLabel;
+    lblHPC: TLabel;
+    Label30: TLabel;
+    lblTestnmrs: TLabel;
+    btnRecom: TButton;
+    lblTotalTests: TLabel;
+    pnlCal: TPanel;
+    Label31: TLabel;
+    rgpDays: TRadioGroup;
+    prog: TGauge;
+    Label34: TLabel;
+    sGridDays: TStringGrid;
+    lblA9: TLabel;
+    lblA10: TLabel;
+    lblA11: TLabel;
+    lblA12: TLabel;
+    lblA8: TLabel;
+    Label43: TLabel;
+    lblATotal: TLabel;
+    pnlChoose: TPageControl;
+    tabTest: TTabSheet;
+    tabVenue: TTabSheet;
+    tabSuper: TTabSheet;
+    tabAll: TTabSheet;
+    sGridVenues: TStringGrid;
+    sGridSupervisors: TStringGrid;
+    sGridAll: TStringGrid;
+    Label38: TLabel;
+    Label39: TLabel;
+    Label41: TLabel;
+    Label40: TLabel;
+    Label42: TLabel;
+    pnlManual: TPanel;
+    Label45: TLabel;
+    Label46: TLabel;
+    tmrClose: TTimer;
+    tmrOpen: TTimer;
+    popTests: TPopupMenu;
+    Addtest1: TMenuItem;
+    Removetest1: TMenuItem;
+    popAll: TPopupMenu;
+    Add1: TMenuItem;
+    AddSupervisor1: TMenuItem;
+    rdbTest: TRadioButton;
+    rdbSupervisors: TRadioButton;
+    sGridSelect: TStringGrid;
+    btnMaximizeEdit: TButton;
+    Panel1: TPanel;
+    lblSession: TLabel;
+    Label48: TLabel;
+    Label55: TLabel;
+    lblDay: TLabel;
+    lblVenue: TLabel;
+    Label58: TLabel;
+    Label49: TLabel;
+    lbl1: TLabel;
+    lbl2: TLabel;
+    procedure Button5Click(Sender: TObject);
+    procedure btnLoadClick(Sender: TObject);
+    procedure Button4Click(Sender: TObject);
+    procedure Button2Click(Sender: TObject);
+    procedure btnLoadAllClick(Sender: TObject);
+    procedure setupGrid();
+    procedure FormActivate(Sender: TObject);
+    procedure FormShow(Sender: TObject);
+    procedure btnRefClick(Sender: TObject);
+    function check(): boolean;
+    function isNumericT(s:string): boolean;
+    function isNumericS(s:string): boolean;
+    function isNumeric(s:string): boolean;
+    procedure tmrexpandTimer(Sender: TObject);
+    procedure pnlSelectFilesClick(Sender: TObject);
+    procedure tmrShrinkTimer(Sender: TObject);
+    procedure getValues();
+    procedure tmr2STimer(Sender: TObject);
+    procedure tmr2ETimer(Sender: TObject);
+    procedure pnlReviewClick(Sender: TObject);
+    procedure edtDaysChange(Sender: TObject);
+    procedure btnRecomClick(Sender: TObject);
+    procedure btnLoadSettingsClick(Sender: TObject);
+    procedure FormClose(Sender: TObject; var Action: TCloseAction);
+    procedure rgpDaysClick(Sender: TObject);
+    procedure pnlManualClick(Sender: TObject);
+    procedure tmrCloseTimer(Sender: TObject);
+    procedure tmrOpenTimer(Sender: TObject);
+    procedure Addtest1Click(Sender: TObject);
+    procedure rdbTestClick(Sender: TObject);
+    procedure Add1Click(Sender: TObject);
+    procedure sGridSelectDblClick(Sender: TObject);
+    procedure AddSupervisor1Click(Sender: TObject);
+    procedure btnMaximizeEditClick(Sender: TObject);
+    procedure sGridAllClick(Sender: TObject);
+  private
+    { Private declarations }
+  public
+    { Public declarations }
+  end;
+
+var
+  frmFinal: TfrmFinal;
+  Tekstra: ekstra;
+  bOne,bTwo,bThree,bFour: boolean;
+  iVenues: array[0..1000,0..2] of integer;
+  iTests: array[0..1000,0..3] of integer;
+  iSuper: array[0..1000,0..2] of integer;
+  //iCalendar: TMDarray;
+  MyCalendar: calendar;
+  SelectRow,SelectCol:integer;
+
+implementation
+
+{$R *.dfm}
+procedure TfrmFinal.getValues();
+var
+a,b,iSeats: integer;
+i0,i1,i2,i3,c0,c1,c2,c3:integer;
+begin
+    //Get iVenues's values
+    iSeats:=0;
+    for a:=1 to sGridVenue.RowCount-2 do
+    begin
+        iVenues[a-1,0]:=strToInt(sGridVenue.Cells[0,a]);
+        iVenues[a-1,1]:=strToInt(sGridVenue.Cells[2,a]);
+        if sGridVenue.Cells[3,a]='' then
+        begin
+          iVenues[a-1,2]:=0;
+          sGridVenue.Cells[3,a]:='0';
+        end else iVenues[a-1,2]:=strToInt(sGridVenue.Cells[3,a]);
+       //messagedlg(sGridVenue.Cells[0,a]+' '+sGridVenue.Cells[2,a]+' '+sGridVenue.Cells[3,a],mtInformation,[mbOK],0);
+    end;
+
+    //Get iTests's values
+    for a:=1 to sGridTests.RowCount-2 do
+    begin
+       iTests[a-1,0]:=strToInt(sGridTests.Cells[0,a]);
+       iTests[a-1,1]:=strToInt(sGridTests.Cells[1,a]);
+       iTests[a-1,2]:=strToInt(sGridTests.Cells[3,a]);
+       iTests[a-1,3]:=strToInt(sGridTests.Cells[4,a]);
+       //messagedlg(sGridVenue.Cells[0,a]+' '+sGridVenue.Cells[2,a]+' '+sGridVenue.Cells[3,a],mtInformation,[mbOK],0);
+    end;
+
+    //Get iSuper's values
+    for a:=1 to gridS.RowCount-2 do
+    begin
+       iSuper[a-1,0]:=strToInt(gridS.Cells[0,a]);
+       iSuper[a-1,1]:=strToInt(gridS.Cells[3,a]);
+       if gridS.Cells[4,a]='' then
+        begin
+          iSuper[a-1,2]:=0;
+          gridS.Cells[4,a]:='0';
+        end else iSuper[a-1,2]:=strToInt(gridS.Cells[4,a]);
+    end;
+
+    i0:=0;
+    i1:=0;
+    i2:=0;
+    i3:=0;
+    c0:=0;
+    c1:=0;
+    c2:=0;
+    c3:=0;
+    for a:=0 to gridS.RowCount-3 do
+    begin
+        b:=iSuper[a,1];
+        if b=0 then
+        begin
+            i0:=i0+iSuper[a,2];
+            c0:=c0+1;
+        end else if b=1 then
+        begin
+            i1:=i1+iSuper[a,2];
+            c1:=c1+1;
+        end else if b=2 then
+        begin
+            i2:=i2+iSuper[a,2];
+            c2:=c2+1;
+        end else if b=3 then
+        begin
+            i3:=i3+iSuper[a,2];
+            c3:=c3+1;
+        end;
+    end;
+    lblC0.Caption:=intToStr(c0);
+    lblH0.Caption:=intToStr(i0*60);
+    lblC1.Caption:=intToStr(c1);
+    lblH1.Caption:=intToStr(i1*60);
+    lblC2.Caption:=intToStr(c2);
+    lblH2.Caption:=intToStr(i2*60);
+    lblC3.Caption:=intToStr(c3);
+    lblH3.Caption:=intToStr(i3*60);
+
+
+
+    for a:=0 to gridS.RowCount-3 do
+    begin
+       iSeats:=iSeats+iVenues[a,1];
+    end;
+    lblStotal.Caption:=IntToStr((i0+i1+i2+i3)*60);
+    lblStotalH.Caption:=intToStr(i0+i1+i2+i3);
+    lblVenues.Caption:=intToStr(sGridVenue.RowCount-2);
+    lblSeats.caption:=intToStr(iSeats);
+
+end;
+
+
+
+function TfrmFinal.isNumericT(s: string): boolean;
+begin
+    if (s='8') OR (s='9') OR (s='10') OR (s='11') OR (s='12')
+    then
+        isNumericT := true
+    else
+        isNumericT := false;
+end;
+
+function TfrmFinal.isNumeric(s: string): boolean;
+begin
+    if (s='1') OR (s='2') OR (s='') OR (s='0')
+    then
+        isNumeric := true
+    else
+        isNumeric := false;
+end;
+
+function TfrmFinal.isNumericS(s: string): boolean;
+begin
+    if (s='1') OR (s='2') OR (s='3') OR (s='0')
+    then
+        isNumericS := true
+    else
+        isNumericS := false;
+end;
+
+
+
+function TfrmFinal.check(): boolean;
+var
+a:integer;
+begin
+    result := true;
+    if (sGridTests.RowCount < 3) then
+    begin
+        messagedlg('Tests'' error'+#10+'No data to check in table',mtError,[mbOK],0);
+        result := false;
+    end;
+    if (sGridVenue.RowCount < 3) then
+    begin
+        messagedlg('Venues'' error'+#10+'No data to check in table',mtError,[mbOK],0);
+        check:= false;
+    end;
+    if (gridS.RowCount < 3) then
+    begin
+        messagedlg('Supervisors'' error'+#10+'No data to check in table',mtError,[mbOK],0);
+        check:= false;
+    end;
+
+    for a:=1 to (sGridTests.RowCount-2) do
+    begin
+        if (isNumericT(sGridTests.Cells[1,a])=false) then
+        begin
+            messagedlg('Tests'' error'+#10+'Grade should be {8,9,10,11 or 12} at row ' +intToStr(a),mtError,[mbOK],0);
+            check := false;
+        end;
+        if (length(sGridTests.Cells[2,a])<1) then
+        begin
+            messagedlg('Tests'' error'+#10+'No subject entered at row ' +intToStr(a),mtError,[mbOK],0);
+            check:= false;
+        end;
+        if not (Tekstra.isNumber(sGridTests.Cells[3,a])) then
+        begin
+            messagedlg('Tests'' error'+#10+'Test number should be integer at row ' +intToStr(a),mtError,[mbOK],0);
+            check:= false;
+        end;
+        if not (Tekstra.isNumber(sGridTests.Cells[4,a])) then
+        begin
+            messagedlg('Tests'' error'+#10+'Time should be integer at row ' +intToStr(a),mtError,[mbOK],0);
+            check:= false;
+        end;
+    end;
+    //Venues
+    for a:=1 to (sGridvenue.RowCount-2) do
+    begin
+        if (length(sGridvenue.Cells[1,a])=0) then
+        begin
+            messagedlg('Venues'' error'+#10+'No venue name at row ' +intToStr(a),mtError,[mbOK],0);
+            check:= false;
+        end;
+        if not (Tekstra.isNumber(sGridvenue.Cells[2,a])) then
+        begin
+            messagedlg('Venues'' error'+#10+'Capacity should be integer at row ' +intToStr(a),mtError,[mbOK],0);
+            check:= false;
+        end;
+        if not (isNumeric(sGridvenue.Cells[3,a])) then
+        begin
+            messagedlg('Venues'' error'+#10+'Level can only be {0, 1, 2 or empty} at row ' +intToStr(a),mtError,[mbOK],0);
+            check:= false;
+        end;
+    end;
+    //Superv
+    for a:=1 to (gridS.RowCount-2) do
+    begin
+        if (length(gridS.Cells[1,a])=0) then
+        begin
+            messagedlg('Supervisors'' error'+#10+'No Surname at row ' +intToStr(a),mtError,[mbOK],0);
+            check:= false;
+        end;
+        if (length(gridS.Cells[2,a])=0) then
+        begin
+            messagedlg('Supervisors'' error'+#10+'No name at row ' +intToStr(a),mtError,[mbOK],0);
+            check:= false;
+        end;
+        if (isNumericS(gridS.Cells[3,a])=false) then
+        begin
+            messagedlg('Supervisors'' error'+#10+'Level should be between 0 and 3 at row ' + intToStr(a),mtError,[mbOK],0);
+            check:= false;
+        end;
+        if not ((Tekstra.isNumber(gridS.Cells[4,a])) OR (length(gridS.Cells[4,a])=0)) then
+        begin
+            messagedlg('Supervisors'' error'+#10+'Hour should be numeric or empty at row ' + intToStr(a),mtError,[mbOK],0);
+            check:= false;
+        end;
+    end;
+end;
+
+
+procedure TfrmFinal.setupGrid();
+begin
+    sGridTests.Cells[0,0] := 'ID';
+    sGridTests.Cells[1,0] := 'Grade';
+    sGridTests.Cells[2,0] := 'Subject';
+    sGridTests.Cells[3,0] := 'Studentcount';
+    sGridTests.Cells[4,0] := 'Test time (minutes)';
+    sGridTests.ColWidths[0] := 30;
+    sGridTests.ColWidths[1] := 80;
+    sGridTests.ColWidths[2] := 120;
+    sGridTests.ColWidths[3] := 80;
+    sGridTests.ColWidths[4] := 100;
+    gridS.Cells[1,0] := 'ID';
+    gridS.Cells[1,0] := 'Surname';
+    gridS.Cells[2,0] := 'Name';
+    gridS.Cells[3,0] := 'Level';
+    gridS.Cells[4,0] := 'Hours';
+    gridS.ColWidths[0] := 25;
+    gridS.ColWidths[1] := 160;
+    gridS.ColWidths[2] := 160;
+    gridS.ColWidths[3] := 50;
+    gridS.ColWidths[4] := 80;
+    sGridvenue.Cells[1,0] := 'ID';
+    sGridvenue.Cells[1,0] := 'Venue name';
+    sGridvenue.Cells[2,0] := 'Capacity';
+    sGridvenue.Cells[3,0] := 'Level';
+    sGridvenue.ColWidths[0] := 25;
+    sGridvenue.ColWidths[1] := 160;
+    sGridvenue.ColWidths[2] := 80;
+    sGridvenue.ColWidths[3] := 50;
+end;
+
+
+procedure TfrmFinal.Button5Click(Sender: TObject);
+begin
+    rgpLoadTests.Items.Clear;
+    Tekstra.FindAll('*.tst',faAnyFile,rgpLoadTests.Items);
+    rgpLoadVenues.Items.Clear;
+    Tekstra.FindAll('*.ven',faAnyFile,rgpLoadVenues.Items);
+    rgpLoadSupervisors.Items.Clear;
+    Tekstra.FindAll('*.sup',faAnyFile,rgpLoadSupervisors.Items);
+end;
+
+procedure TfrmFinal.btnLoadClick(Sender: TObject);
+var
+sLyn,filename: string;
+myLer: TextFile;
+a,b,ipos: integer;
+begin
+    if (rgpLoadTests.itemindex>-1) then
+    begin
+        if FileExists(rgpLoadTests.Items.Strings[rgpLoadTests.itemindex]) then
+        begin
+            //Clears the grid
+            for a:=1 to sGridTests.RowCount-1 do
+            begin
+                for b:=0 to sGridTests.ColCount-1 do
+                begin
+                    sGridTests.Cells[b,a]:='';
+                end;
+            end;
+            sGridTests.RowCount:=2;
+            b:=1;
+            filename:= rgpLoadTests.Items.Strings[rgpLoadTests.itemindex];
+            assignFile(myLer, filename);
+            reset(myLer);
+            while not EOF(myLer) do
+            begin
+                readln(myler,sLyn);
+                for a:=0 to 4 do
+                begin
+                    ipos := pos(',',sLyn);
+                    sGridTests.Cells[a,b] := copy(sLyn,0,ipos-1);
+                    delete(sLyn,1,ipos);
+                end;
+                b := b+1;
+                sGridTests.RowCount:= b+1;
+            end;
+            closefile(myLer);
+        end else
+            messagedlg('Tests error'+#10+'The file you selected does not exists',mtError,[mbOK],0);
+    end else
+        messagedlg('Tests error'+#10+'No item selected',mtError,[mbOK],0);
+end;
+
+procedure TfrmFinal.Button4Click(Sender: TObject);
+var
+sLyn,filename: string;
+myLer: TextFile;
+a,b,ipos: integer;
+begin
+    if (rgpLoadSupervisors.itemindex>-1) then
+    begin
+        if FileExists(rgpLoadSupervisors.Items.Strings[rgpLoadSupervisors.itemindex]) then
+        begin
+            //Clears the grid
+            for a:=1 to gridS.RowCount-1 do
+            begin
+                for b:=0 to gridS.ColCount-1 do
+                begin
+                    gridS.Cells[b,a]:='';
+                end;
+            end;
+            gridS.RowCount:=2;
+            b:=1;
+            filename:= rgpLoadSupervisors.Items.Strings[rgpLoadSupervisors.itemindex];
+            assignFile(myLer, filename);
+            reset(myLer);
+            while not EOF(myLer) do
+            begin
+                readln(myler,sLyn);
+                for a:=0 to 4 do
+                begin
+                    ipos := pos(',',sLyn);
+                    gridS.Cells[a,b] := copy(sLyn,0,ipos-1);
+                    delete(sLyn,1,ipos);
+                end;
+                b := b+1;
+                gridS.RowCount:= b+1;
+            end;
+            closefile(myLer);
+        end else
+            messagedlg('Supervisor error'+#10+'The file you selected does not exists',mtError,[mbOK],0);
+    end else
+        messagedlg('Supervisor error'+#10+'No item selected',mtError,[mbOK],0);
+end;
+
+procedure TfrmFinal.Button2Click(Sender: TObject);
+var
+sLyn,filename: string;
+myLer: TextFile;
+a,b,ipos: integer;
+begin
+    if (rgpLoadVenues.itemindex>-1) then
+    begin
+        if FileExists(rgpLoadVenues.Items.Strings[rgpLoadVenues.itemindex]) then
+        begin
+            //Clears the grid
+            for a:=1 to sGridvenue.RowCount-1 do
+            begin
+                for b:=0 to sGridvenue.ColCount-1 do
+                begin
+                    sGridvenue.Cells[b,a]:='';
+                end;
+            end;
+            sGridvenue.RowCount:=2;
+            b:=1;
+            filename:= rgpLoadVenues.Items.Strings[rgpLoadVenues.itemindex];
+            assignFile(myLer, filename);
+            reset(myLer);
+            while not EOF(myLer) do
+            begin
+                readln(myler,sLyn);
+                for a:=0 to 3 do
+                begin
+                    ipos := pos(',',sLyn);
+                    sGridvenue.Cells[a,b] := copy(sLyn,0,ipos-1);
+                    delete(sLyn,1,ipos);
+                end;
+                b := b+1;
+                sGridvenue.RowCount:= b+1;
+            end;
+            closefile(myLer);
+        end else
+            messagedlg('Venue error'+#10+'The file you selected does not exists',mtError,[mbOK],0);
+    end else
+        messagedlg('Venue error'+#10+'No item selected',mtError,[mbOK],0);
+end;
+
+procedure TfrmFinal.btnLoadAllClick(Sender: TObject);
+begin
+    btnLoad.Click;
+    Button2.Click;
+    Button4.Click;
+    if check()=true then
+    begin
+       messagedlg('All tables successfully loaded',mtInformation,[mbOK],0);
+       btnRef.Click;
+       pnlSelectFilesClick(Sender);
+    end  else messagedlg('All tables not loaded',mtError,[mbOK],0);
+end;
+
+procedure TfrmFinal.FormActivate(Sender: TObject);
+begin
+    setupGrid();
+    rgpLoadTests.ItemIndex:=0;
+    rgpLoadVenues.ItemIndex:=0;
+    rgpLoadSupervisors.ItemIndex:=0;
+    btnLoadAll.Click;
+    btnRecom.Click;
+    btnLoadSettings.Click;
+    rgpDays.ItemIndex:=0;
+    rgpDays.OnClick(Sender);
+    pnlSelectFiles.OnClick(Sender);
+    lbl1.Caption:='C'+#10+'l'+#10+'i'+#10+'c'+#10+'k'+#10+' '+#10+'t'+#10+'o'+#10+' '+#10+'e'+#10+'x'+#10+'p'+#10+'a'+#10+'n'+#10+'d';
+    lbl2.Caption:='E'+#10+'D'+#10+'I'+#10+'T'+#10+'I'+#10+'N'+#10+'G';
+end;
+
+procedure TfrmFinal.FormShow(Sender: TObject);
+begin
+    Button5.Click;
+end;
+
+procedure TfrmFinal.btnRefClick(Sender: TObject);
+var
+i8,i9,i10,i11,i12,a,b,total: integer;
+s8,s9,s10,s11,s12: integer;
+count8,count9,count10,count11,count12: integer;
+s: string;
+boolA: boolean;
+begin
+    //btnCheck.Click;
+    i8:=0;
+    i9:=0;
+    i10:=0;
+    i11:=0;
+    i12:=0;
+    s8:=0;
+    s9:=0;
+    s10:=0;
+    s11:=0;
+    s12:=0;
+    count8:=0;
+    count9:=0;
+    count10:=0;
+    count11:=0;
+    count12:=0;
+    if (check()=false) then
+        messagedlg('Cannot get stats because there''s incorrect data in the table',mtError,[mbOK],0)
+    else begin
+        for a:=1 to sGridTests.RowCount-2 do
+        begin
+            s:=sGridTests.Cells[1,a];
+            if s='8' then
+            begin
+                i8:=i8+strToInt(sGridTests.Cells[4,a]);
+                s8:=s8+1;
+                count8:=count8+strToInt(sGridTests.Cells[3,a]);
+            end
+            else if s='9' then
+            begin
+                i9:=i9+strToInt(sGridTests.Cells[4,a]);
+                s9:=s9+1;
+                count9:=count9+strToInt(sGridTests.Cells[3,a]);
+            end
+            else if s='10' then
+            begin
+                i10:=i10+strToInt(sGridTests.Cells[4,a]);
+                s10:=s10+1;
+                count10:=count10+strToInt(sGridTests.Cells[3,a]);
+            end
+            else if s='11' then
+            begin
+                i11:=i11+strToInt(sGridTests.Cells[4,a]);
+                s11:=s11+1;
+                count11:=count11+strToInt(sGridTests.Cells[3,a]);
+            end
+            else if s='12' then
+            begin
+                i12:=i12+strToInt(sGridTests.Cells[4,a]);
+                s12:=s12+1;
+                count12:=count12+strToInt(sGridTests.Cells[3,a]);
+            end;
+        end;
+    lbl8.Caption:=intToStr(i8);
+    lbl9.Caption:=intToStr(i9);
+    lbl10.Caption:=intToStr(i10);
+    lbl11.Caption:=intToStr(i11);
+    lbl12.Caption:=intToStr(i12);
+    lbl8S.Caption:=intToStr(s8);
+    lbl9S.Caption:=intToStr(s9);
+    lbl10S.Caption:=intToStr(s10);
+    lbl11S.Caption:=intToStr(s11);
+    lbl12S.Caption:=intToStr(s12);
+    total:=i8+i9+i10+i11+i12;
+    lblTotal.Caption:=intToStr(total);
+    lblHours.Caption:=FloatToStr(RoundTo(total/60,-2));
+    getValues();
+    lblTotalTests.Caption:=IntToStr(StrToInt(lbl8S.Caption)+StrToInt(lbl9S.Caption)+
+    StrToInt(lbl10S.Caption)+StrToInt(lbl11S.Caption)+StrToInt(lbl12S.Caption));
+    if strToInt(lbl8S.Caption)>0 then
+        lblA8.Caption:=intToStr(round(count8/strToInt(lbl8S.Caption)))
+    else lblA8.Caption:='0';
+    if strToInt(lbl9S.Caption)>0 then
+        lblA9.Caption:=intToStr(round(count9/strToInt(lbl9S.Caption)))
+    else lblA9.Caption:='0';
+    if strToInt(lbl10S.Caption)>0 then
+        lblA10.Caption:=intToStr(round(count10/strToInt(lbl10S.Caption)))
+    else lblA10.Caption:='0';
+    if strToInt(lbl11S.Caption)>0 then
+        lblA11.Caption:=intToStr(round(count11/strToInt(lbl11S.Caption)))
+    else lblA11.Caption:='0';
+    if strToInt(lbl12S.Caption)>0 then
+        lblA12.Caption:=intToStr(round(count12/strToInt(lbl12S.Caption)))
+    else lblA12.Caption:='0';
+    lblATotal.Caption:=intToStr(Round((strToInt(lblA8.Caption)+strToInt(lblA9.Caption)+
+    strToInt(lblA10.Caption)+strToInt(lblA11.Caption)+strToInt(lblA12.Caption))/5));
+    end;
+end;
+
+procedure TfrmFinal.tmrexpandTimer(Sender: TObject);
+begin
+    tmrShrink.Enabled:=false;
+    if pnlSelectFiles.height<409 then
+    begin
+        pnlSelectFiles.Height:=pnlSelectFiles.Height+23;
+    end else begin
+        tmrExpand.Enabled:=false;
+    end;
+end;
+
+procedure TfrmFinal.pnlSelectFilesClick(Sender: TObject);
+begin
+    pnlSelectFiles.BringToFront;
+    if bOne=false then bOne:=true
+    else bOne:=false;
+
+    if bOne=true then
+    begin
+        tmrexpand.Enabled:=true;
+        lblexpand.Caption:='Click panel to shrink';
+    end else
+    begin
+        tmrShrink.Enabled:=true;
+        lblexpand.Caption:='Click panel to expand';
+    end;
+end;
+
+procedure TfrmFinal.tmrShrinkTimer(Sender: TObject);
+begin
+    tmrexpand.Enabled:=false;
+    if pnlSelectFiles.height>41 then
+    begin
+        pnlSelectFiles.Height:=pnlSelectFiles.Height-23;
+    end else begin
+        tmrShrink.Enabled:=false;
+    end;
+end;
+
+procedure TfrmFinal.tmr2STimer(Sender: TObject);
+begin
+    tmr2E.Enabled:=false;
+    if pnlReview.height>41 then
+    begin
+        pnlReview.height:=pnlReview.height-37;
+    end else begin
+        tmr2S.Enabled:=false;
+    end;
+end;
+
+procedure TfrmFinal.tmr2ETimer(Sender: TObject);
+begin
+    tmr2S.Enabled:=false;
+    if pnlReview.height<633 then
+    begin
+        pnlReview.height:=pnlReview.height+37;
+    end else begin
+        tmr2E.Enabled:=false;
+    end;
+end;
+
+procedure TfrmFinal.pnlReviewClick(Sender: TObject);
+begin
+    pnlReview.BringToFront;
+    if bTwo=false then bTwo:=true
+    else bTwo:=false;
+
+    if bTwo=true then
+    begin
+        tmr2E.Enabled:=true;
+        lblReview.Caption:='Click panel to shrink';
+    end else
+    begin
+        tmr2S.Enabled:=true;
+        lblReview.Caption:='Click panel to expand';
+    end;
+end;
+
+procedure TfrmFinal.edtDaysChange(Sender: TObject);
+var
+a,iDays,iSessions,iHours,iSeats: integer;
+dRatio,dDays: double;
+begin
+    if (check()=false) then
+    begin
+        messagedlg('Not allowed to change this setings because'+
+        #10+'the 3 files has not been loaded sucessfully',mtError,[mbOK],0);
+        edtDays.Value:=0;
+        edtSessions.Value:=0;
+        edtHours.Value:=0;
+        prog.Progress:=0;
+    end
+    else begin
+        iDays:=edtDays.Value;
+        iSessions:=edtSessions.Value;
+        iHours:=edtHours.Value;
+        iHours:=iHours*strToInt(lblVenues.caption);
+        lblHPC.Caption:=intToStr(iHours);
+
+        iSeats:=strToInt(lblSeats.Caption);
+        dDays:=iSeats/strToInt(lblATotal.Caption);
+        iDays:=trunc(dDays);
+        if iDays=0 then iDays:=1;
+        lblTestnmrs.Caption:=intToStr(iDays*edtSessions.Value);
+        if (edtDays.value>0) and (strToInt(lblTestnmrs.Caption)>0) then
+        dRatio:=strToFloat(lblTotalTests.caption)/(edtDays.Value*strToInt(lblTestnmrs.caption))
+        else dRatio:=0;
+        dRatio:=dRatio*100;
+        if (dRatio=100) then
+        begin
+            messagedlg('The ratio is 100% and may cause some difficulty',mtInformation,[mbOK],0);
+            prog.ForeColor:=clRed;
+        end else if (dRatio>100) then
+        begin
+            messagedlg('The ratio is over 100% and will cause some difficulty',mtInformation,[mbOK],0);
+            prog.ForeColor:=clRed;
+        end else
+            prog.ForeColor:=clLime;
+        prog.Progress:=Round(dRatio);
+    end;
+end;
+
+procedure TfrmFinal.btnRecomClick(Sender: TObject);
+var
+iTestNmrs,iDays,iSeats: integer;
+dDays: Double;
+begin
+        dDays:=4.99999;
+        iDays:=Round(int(dDays));
+        if iDays=0 then iDays:=1;
+
+    if (check()=false) then
+        messagedlg('Cannot calculate settings because the correct files'+
+        #10+' has not been loaded sucessfully',mtError,[mbOK],0)
+    else begin
+        edtSessions.Value:=2;
+        edtHours.Value:=3;
+        iSeats:=strToInt(lblSeats.Caption);
+        dDays:=iSeats/strToInt(lblATotal.Caption);
+        iDays:=trunc(dDays);
+        if iDays=0 then iDays:=1;
+        messagedlg('Working on a average of '+intToStr(iDays)+' test/s per session',mtInformation,[mbOK],0);
+        lblTestnmrs.Caption:=intToStr(iDays*edtSessions.Value);
+        //Round to top
+        dDays:=strToInt(lblTotalTests.Caption)/iDays;
+        iDays:=trunc(dDays+1);
+        dDays:=frac(dDays);
+        if dDays=0 then
+            iDays:=iDays-1;
+        dDays:=iDays/edtSessions.value;
+        iDays:=trunc(dDays+1);
+        dDays:=frac(dDays);
+        if dDays=0 then
+            iDays:=iDays-1;
+        edtDays.Value:=iDays;
+    end;
+
+end;
+
+    //iHours:=
+
+procedure TfrmFinal.btnLoadSettingsClick(Sender: TObject);
+var
+iDays,iSessions,iVenues,a,b,c: integer;
+begin
+    iDays:=edtDays.Value;
+    iSessions:=edtSessions.Value;
+    iVenues:=strToInt(lblVenues.caption);
+    MyCalendar:= calendar.Create();
+    Mycalendar.setValues(iDays,iSessions,iVenues);
+    MyCalendar.setCalNull();
+    MyCalendar.getDays(rgpDays.Items);
+    MyCalendar.getGridVenue(1,sGridDays);
+
+    //Setting up internal tables in MyCalendar
+    MyCalendar.setTests(sGridTests);
+    MyCalendar.setVenues(sGridVenue);
+    MyCalendar.setSup(GridS);
+end;
+
+procedure TfrmFinal.FormClose(Sender: TObject; var Action: TCloseAction);
+begin
+    MyCalendar.Free;
+end;
+
+procedure TfrmFinal.rgpDaysClick(Sender: TObject);
+begin
+    MyCalendar.getGridVenue((rgpDays.ItemIndex+1),sGridDays);
+    MyCalendar.getGridTest((rgpDays.ItemIndex+1),sGridVenues);
+    MyCalendar.getGridSup((rgpDays.ItemIndex+1),sGridSupervisors);
+    MyCalendar.getGridAll((rgpDays.ItemIndex+1),sGridAll);
+end;
+
+procedure TfrmFinal.pnlManualClick(Sender: TObject);
+begin
+    pnlManual.BringToFront;
+    if bFour=false then bFour:=true
+    else bFour:=false;
+
+    if bFour=true then
+    begin
+        tmrOpen.Enabled:=true;
+        lbl1.Visible:=false;
+        lbl2.Visible:=false;
+        sGridSelect.Visible:=true;
+        panel1.Visible:=true;
+        //lblReview.Caption:='Click panel to shrink';
+    end else
+    begin
+        tmrClose.Enabled:=true;
+        lbl1.Visible:=true;
+        lbl2.Visible:=true;
+        sGridSelect.Visible:=false;
+        panel1.Visible:=false;
+        //lblReview.Caption:='Click panel to expand';
+    end;
+end;
+
+procedure TfrmFinal.tmrCloseTimer(Sender: TObject);
+begin
+    tmrOpen.Enabled:=false;
+    if pnlManual.Width>58 then
+    begin
+        pnlManual.Width:=pnlManual.Width-23;
+        pnlManual.Left:=pnlManual.Left+23;
+    end else begin
+        tmrClose.Enabled:=false;
+    end;
+end;
+
+procedure TfrmFinal.tmrOpenTimer(Sender: TObject);
+begin
+    tmrClose.Enabled:=false;
+    if pnlManual.Width<402 then
+    begin
+        pnlManual.Width:=pnlManual.Width+23;
+        pnlManual.Left:=pnlManual.Left-23;
+    end else begin
+        tmrOpen.Enabled:=false;
+    end;
+end;
+
+procedure TfrmFinal.Addtest1Click(Sender: TObject);
+var
+iCol,iRow:integer;
+begin
+    iCol:=sGridDays.Col;
+    iRow:=sGridDays.Row;
+    if (iCol<1) or (iRow<1) then
+        messagedlg('No cell selected',mtError,[mbOK],0)
+    else begin
+        if (bFour=false) then
+            pnlManual.OnClick(Sender);
+
+    end;
+end;
+
+procedure TfrmFinal.rdbTestClick(Sender: TObject);
+var
+a,b,c:integer;
+begin
+    if rdbTest.Checked=true then
+    begin
+        MyCalendar.getSelectTests(sGridSelect);
+    end else
+    begin
+
+    end;
+end;
+
+procedure TfrmFinal.Add1Click(Sender: TObject);
+var
+iCol,iRow:integer;
+begin
+    iCol:=sGridAll.Col;
+    iRow:=sGridAll.Row;
+    rdbTest.Checked:=true;
+    if (iCol<1) or (iRow<1) then
+        messagedlg('No cell selected',mtError,[mbOK],0)
+    else begin
+        if (bFour=false) then
+            pnlManual.OnClick(Sender);
+        SelectRow:=iRow;
+        SelectCol:=iCol;
+        if sGridAll.Cells[sGridAll.Col,1]='Pupils' then
+            SelectCol:=SelectCol-2
+        else if sGridAll.Cells[sGridAll.Col,1]='Supervisors' then
+            SelectCol:=SelectCol-1
+        else if sGridAll.Cells[sGridAll.Col,1]='Avail seats' then
+            SelectCol:=SelectCol-3;
+    end;
+end;
+
+procedure TfrmFinal.sGridSelectDblClick(Sender: TObject);
+var
+iCol,iRow,iTestCol,iSuperCol:integer;
+iSeats,iCount,ReplaceRow,a:integer;
+begin
+    iCol:=sGridSelect.Col;
+    iRow:=sGridSelect.Row;
+    if (iCol<1) OR (iRow<1) then
+        messagedlg('Not a valid test',mtError,[mbOK],0)
+    else if (SelectCol<1) OR (SelectRow<2) then
+        messagedlg('No destination selected',mtError,[mbOK],0)
+    else begin
+        if (rdbTest.Checked=true) then
+        begin
+            if strToInt(sGridAll.Cells[SelectCol+2,SelectRow])>0 then
+            begin
+                if messagedlg('Are you sure you want to replace the test?',mtConfirmation,[mbYes,mbNo],0)=6
+                then begin
+                    iSuperCol:=strToInt(sGridAll.Cells[SelectCol,SelectRow]);
+                    for a:=1 to sGridTests.RowCount-1 do
+                    begin
+                        if Tekstra.isNumber(sGridSelect.Cells[0,a]) AND (iSuperCol=strToInt(sGridSelect.Cells[0,a])) then
+                        begin
+                            iSeats:=strToInt(sGridSelect.Cells[3,a]);
+                            iSeats:=iSeats+strToInt(sGridAll.Cells[SelectCol+2,SelectRow]);
+                            sGridSelect.Cells[3,a]:=IntToStr(iSeats);
+                            sGridAll.Cells[SelectCol+2,SelectRow]:='0';
+                            sGridAll.Cells[SelectCol,SelectRow]:='';
+
+                            sGridAll.Cells[SelectCol,SelectRow]:=sGridSelect.Cells[0,iRow];
+                            iSeats:=strToInt(sGridAll.Cells[SelectCol+3,SelectRow]);
+                            iCount:=StrToInt(sGridSelect.Cells[3,iRow]);
+                            if (iCount>iSeats) then
+                                begin
+                                    sGridAll.Cells[SelectCol+2,SelectRow]:=intToStr(iSeats);
+                                    sGridSelect.Cells[3,iRow]:=intToStr(iCount-iSeats);
+                                end else begin
+                                    sGridAll.Cells[SelectCol+2,SelectRow]:=intToStr(iCount);
+                                    sGridSelect.Cells[3,iRow]:='0';
+                                end;
+                        end;
+                       // messagedlg(intToStr(a),mtConfirmation,[mbYes,mbNo],0);
+                    end;
+                    //messagedlg('Continued',mtConfirmation,[mbYes,mbNo],0);
+                end else
+                begin
+
+                end;
+             end else
+             begin
+                sGridAll.Cells[SelectCol,SelectRow]:=sGridSelect.Cells[0,iRow];
+                iSeats:=strToInt(sGridAll.Cells[SelectCol+3,SelectRow]);
+                iCount:=StrToInt(sGridSelect.Cells[3,iRow]);
+                if (iCount>iSeats) then
+                    begin
+                        sGridAll.Cells[SelectCol+2,SelectRow]:=intToStr(iSeats);
+                        sGridSelect.Cells[3,iRow]:=intToStr(iCount-iSeats);
+                    end else begin
+                        sGridAll.Cells[SelectCol+2,SelectRow]:=intToStr(iCount);
+                        sGridSelect.Cells[3,iRow]:='0';
+                    end;
+             end;
+       // begin
+
+        end;
+end;  end;
+
+
+
+
+
+
+
+
+
+
+
+
+procedure TfrmFinal.AddSupervisor1Click(Sender: TObject);
+var
+iCol,iRow:integer;
+begin
+    iCol:=sGridAll.Col;
+    iRow:=sGridAll.Row;
+    rdbSupervisors.Checked:=true;
+    if (iCol<1) or (iRow<1) then
+        messagedlg('No cell selected',mtError,[mbOK],0)
+    else begin
+        if (bFour=false) then
+            pnlManual.OnClick(Sender);
+
+        SelectRow:=iRow;
+        SelectCol:=iCol;
+        if sGridAll.Cells[sGridAll.Col,1]='Test' then
+            SelectCol:=SelectCol+1
+        else if sGridAll.Cells[sGridAll.Col,1]='Pupils' then
+            SelectCol:=SelectCol-1
+        else if sGridAll.Cells[sGridAll.Col,1]='Avail seats' then
+            SelectCol:=SelectCol-2;
+    end;
+end;
+
+procedure TfrmFinal.btnMaximizeEditClick(Sender: TObject);
+begin
+    frmFinal.Align:=alClient;
+    rgpDays.Top:=56;
+    rgpDays.Left:=16;
+    rgpDays.Height:=73;
+    rgpDays.Width:=1249;
+    pnlChoose.Left:=16;
+    pnlChoose.Top:=128;
+    pnlChoose.Height:=793;
+    pnlChoose.Width:=1241;
+    PnlManual.Top:=144;
+    PnlManual.Left:=1208;
+    PnlManual.Top:=144;
+    sGridSelect.Height:=657;
+
+end;
+
+procedure TfrmFinal.sGridAllClick(Sender: TObject);
+var
+iCol,iRow,a:integer;
+sLyn:string;
+begin
+    iCol:=sGridAll.Col;
+    iRow:=sGridAll.Row;
+    SelectRow:=iRow;
+    SelectCol:=iCol;
+    if sGridAll.Cells[sGridAll.Col,1]='Pupils' then
+        SelectCol:=SelectCol-2
+    else if sGridAll.Cells[sGridAll.Col,1]='Avail seats' then
+        SelectCol:=SelectCol-3;
+    lblDay.Caption:=rgpDays.Items.Strings[rgpDays.Itemindex];
+    a:=Trunc(SelectCol/4)+1;
+    lblSession.caption:=IntToStr(a);
+    sLyn:=sGridAll.Cells[0,SelectRow];
+    a:=pos(' ',sLyn);
+    delete(sLyn,1,a);
+    lblVenue.Caption:=sLyn;
+
+end;
+
+end.

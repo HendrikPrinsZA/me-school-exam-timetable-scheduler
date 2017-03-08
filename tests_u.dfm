@@ -1,0 +1,402 @@
+object frmTests: TfrmTests
+  Left = 285
+  Top = 220
+  Width = 1088
+  Height = 647
+  Caption = 'Setup tests'
+  Color = clActiveCaption
+  Font.Charset = DEFAULT_CHARSET
+  Font.Color = clWindowText
+  Font.Height = -11
+  Font.Name = 'MS Sans Serif'
+  Font.Style = []
+  OldCreateOrder = False
+  OnActivate = FormActivate
+  PixelsPerInch = 96
+  TextHeight = 13
+  object Label41: TLabel
+    Left = 397
+    Top = 8
+    Width = 167
+    Height = 41
+    Caption = 'Setup tests'
+    Font.Charset = DEFAULT_CHARSET
+    Font.Color = clWindowText
+    Font.Height = -40
+    Font.Name = 'Modern No. 20'
+    Font.Style = []
+    ParentFont = False
+  end
+  object pnlLoad: TPanel
+    Left = 16
+    Top = 88
+    Width = 185
+    Height = 353
+    Color = clSkyBlue
+    TabOrder = 0
+    object Label42: TLabel
+      Left = 36
+      Top = 8
+      Width = 118
+      Height = 22
+      Caption = 'Load from file'
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = clWindowText
+      Font.Height = -20
+      Font.Name = 'Modern No. 20'
+      Font.Style = []
+      ParentFont = False
+    end
+    object rgpLoad: TRadioGroup
+      Left = 8
+      Top = 40
+      Width = 169
+      Height = 273
+      Caption = 'Available files'
+      TabOrder = 0
+    end
+    object btnRefresh: TButton
+      Left = 8
+      Top = 320
+      Width = 57
+      Height = 25
+      Caption = 'Refresh'
+      TabOrder = 1
+      OnClick = btnRefreshClick
+    end
+    object btnLoad: TButton
+      Left = 80
+      Top = 320
+      Width = 97
+      Height = 25
+      Caption = 'Load'
+      TabOrder = 2
+      OnClick = btnLoadClick
+    end
+  end
+  object pnlDelete: TPanel
+    Left = 16
+    Top = 452
+    Width = 185
+    Height = 149
+    Color = clSkyBlue
+    TabOrder = 1
+    object Label2: TLabel
+      Left = 24
+      Top = 56
+      Width = 17
+      Height = 13
+      Caption = 'ID: '
+    end
+    object Label1: TLabel
+      Left = 44
+      Top = 8
+      Width = 83
+      Height = 22
+      Caption = 'Delete test'
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = clWindowText
+      Font.Height = -20
+      Font.Name = 'Modern No. 20'
+      Font.Style = []
+      ParentFont = False
+    end
+    object btnDelete: TButton
+      Left = 56
+      Top = 104
+      Width = 75
+      Height = 25
+      Caption = 'Delete'
+      TabOrder = 0
+      OnClick = btnDeleteClick
+    end
+    object nmrDelete: TSpinEdit
+      Left = 56
+      Top = 56
+      Width = 121
+      Height = 22
+      MaxValue = 0
+      MinValue = 0
+      TabOrder = 1
+      Value = 0
+    end
+  end
+  object sGridTests: TStringGrid
+    Left = 216
+    Top = 88
+    Width = 449
+    Height = 513
+    RowCount = 2
+    Options = [goFixedVertLine, goFixedHorzLine, goVertLine, goHorzLine, goRangeSelect, goDrawFocusSelected, goEditing]
+    TabOrder = 2
+    OnKeyUp = sGridTestsKeyUp
+  end
+  object btnSave: TButton
+    Left = 576
+    Top = 56
+    Width = 89
+    Height = 25
+    Caption = 'Save to textfile'
+    TabOrder = 3
+    OnClick = btnSaveClick
+  end
+  object btnCheck: TButton
+    Left = 296
+    Top = 56
+    Width = 73
+    Height = 25
+    Caption = 'Check table'
+    TabOrder = 4
+    OnClick = btnCheckClick
+  end
+  object btnNew: TButton
+    Left = 216
+    Top = 56
+    Width = 65
+    Height = 25
+    Caption = 'New table'
+    TabOrder = 5
+  end
+  object pnlTestStats: TPanel
+    Left = 672
+    Top = 96
+    Width = 385
+    Height = 505
+    Color = clSkyBlue
+    TabOrder = 6
+    object shp1: TShape
+      Left = 48
+      Top = 56
+      Width = 281
+      Height = 177
+      Brush.Color = clBtnFace
+      Pen.Width = 2
+    end
+    object Label3: TLabel
+      Left = 148
+      Top = 8
+      Width = 73
+      Height = 22
+      Caption = 'Test stats'
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = clWindowText
+      Font.Height = -20
+      Font.Name = 'Modern No. 20'
+      Font.Style = []
+      ParentFont = False
+    end
+    object Label4: TLabel
+      Left = 72
+      Top = 104
+      Width = 38
+      Height = 13
+      Caption = 'Grade 8'
+      Color = clBtnFace
+      ParentColor = False
+    end
+    object Label5: TLabel
+      Left = 72
+      Top = 120
+      Width = 38
+      Height = 13
+      Caption = 'Grade 9'
+      Color = clBtnFace
+      ParentColor = False
+    end
+    object lbl9: TLabel
+      Left = 248
+      Top = 120
+      Width = 6
+      Height = 13
+      Caption = '0'
+      Color = clBtnFace
+      ParentColor = False
+    end
+    object Label7: TLabel
+      Left = 72
+      Top = 136
+      Width = 44
+      Height = 13
+      Caption = 'Grade 10'
+      Color = clBtnFace
+      ParentColor = False
+    end
+    object lbl10: TLabel
+      Left = 248
+      Top = 136
+      Width = 6
+      Height = 13
+      Caption = '0'
+      Color = clBtnFace
+      ParentColor = False
+    end
+    object Label9: TLabel
+      Left = 72
+      Top = 152
+      Width = 44
+      Height = 13
+      Caption = 'Grade 11'
+      Color = clBtnFace
+      ParentColor = False
+    end
+    object lbl11: TLabel
+      Left = 248
+      Top = 152
+      Width = 6
+      Height = 13
+      Caption = '0'
+      Color = clBtnFace
+      ParentColor = False
+    end
+    object Label11: TLabel
+      Left = 72
+      Top = 168
+      Width = 44
+      Height = 13
+      Caption = 'Grade 12'
+      Color = clBtnFace
+      ParentColor = False
+    end
+    object lbl12: TLabel
+      Left = 248
+      Top = 168
+      Width = 6
+      Height = 13
+      Caption = '0'
+      Color = clBtnFace
+      ParentColor = False
+    end
+    object lblTotal: TLabel
+      Left = 248
+      Top = 192
+      Width = 6
+      Height = 13
+      Caption = '0'
+      Color = clBtnFace
+      ParentColor = False
+    end
+    object lbl8: TLabel
+      Left = 248
+      Top = 104
+      Width = 6
+      Height = 13
+      Caption = '0'
+      Color = clBtnFace
+      ParentColor = False
+    end
+    object Label15: TLabel
+      Left = 216
+      Top = 192
+      Width = 27
+      Height = 13
+      Caption = 'Total:'
+      Color = clBtnFace
+      ParentColor = False
+    end
+    object lblHours: TLabel
+      Left = 248
+      Top = 208
+      Width = 6
+      Height = 13
+      Caption = '0'
+      Color = clBtnFace
+      ParentColor = False
+    end
+    object Label8: TLabel
+      Left = 184
+      Top = 208
+      Width = 62
+      Height = 13
+      Caption = 'Total (hours):'
+      Color = clBtnFace
+      ParentColor = False
+    end
+    object lbl9S: TLabel
+      Left = 160
+      Top = 120
+      Width = 6
+      Height = 13
+      Caption = '0'
+      Color = clBtnFace
+      ParentColor = False
+    end
+    object lbl10S: TLabel
+      Left = 160
+      Top = 136
+      Width = 6
+      Height = 13
+      Caption = '0'
+      Color = clBtnFace
+      ParentColor = False
+    end
+    object lbl11S: TLabel
+      Left = 160
+      Top = 152
+      Width = 6
+      Height = 13
+      Caption = '0'
+      Color = clBtnFace
+      ParentColor = False
+    end
+    object lbl12S: TLabel
+      Left = 160
+      Top = 168
+      Width = 6
+      Height = 13
+      Caption = '0'
+      Color = clBtnFace
+      ParentColor = False
+    end
+    object lbl8S: TLabel
+      Left = 160
+      Top = 104
+      Width = 6
+      Height = 13
+      Caption = '0'
+      Color = clBtnFace
+      ParentColor = False
+    end
+    object Label6: TLabel
+      Left = 136
+      Top = 88
+      Width = 56
+      Height = 13
+      Caption = 'Nmr of tests'
+      Color = clBtnFace
+      ParentColor = False
+    end
+    object Label10: TLabel
+      Left = 216
+      Top = 88
+      Width = 91
+      Height = 13
+      Caption = 'Total time (minutes)'
+      Color = clBtnFace
+      ParentColor = False
+    end
+    object Label16: TLabel
+      Left = 144
+      Top = 64
+      Width = 96
+      Height = 13
+      Caption = 'Tests time per grade'
+      Color = clBtnFace
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = clWindowText
+      Font.Height = -11
+      Font.Name = 'MS Sans Serif'
+      Font.Style = [fsUnderline]
+      ParentColor = False
+      ParentFont = False
+    end
+    object btnRef: TButton
+      Left = 304
+      Top = 8
+      Width = 75
+      Height = 25
+      Caption = 'Refresh stats'
+      TabOrder = 0
+      OnClick = btnRefClick
+    end
+  end
+end

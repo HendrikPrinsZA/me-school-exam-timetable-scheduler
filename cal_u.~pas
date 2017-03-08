@@ -1,0 +1,239 @@
+unit cal_u;
+
+interface
+
+uses
+  Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
+  Dialogs, ComCtrls, StdCtrls, ExtCtrls, Grids, ekstra_u, math, Spin,Gauges;
+
+type
+    calendar = class(Tobject)
+    private
+        theArray: TMDarray;
+        theTests: array[1..1000,0..5] of string;
+        theVenues: array[1..1000,1..3] of string;
+        theSup: array[1..1000,1..3] of string;
+        iDays: integer;
+        iSessions: integer;
+        iVenues: integer;
+    public
+        procedure setCalNull();
+        procedure setTests(grid: TstringGrid);
+        procedure setVenues(grid: TstringGrid);
+        procedure setSup(grid: TstringGrid);
+
+        procedure getSelectTests(grid: TstringGrid);
+
+        procedure setValues(_days:integer; _sessions:integer; _venues:integer);
+        procedure getGridVenue(_day:integer; grid: TStringGrid);
+        procedure getGridTest(_day:integer; grid: TStringGrid);
+        procedure getGridAll(_day:integer; grid: TStringGrid);
+        procedure getGridSup(_day:integer; grid: TStringGrid);
+        procedure setCalendar();
+        procedure getDays(temp: Tstrings);
+    end;
+implementation
+
+procedure calendar.setSup(grid: TstringGrid);
+var
+a,b,c : integer;
+begin
+    a:=grid.RowCount+1;
+    for b:=0 to a do
+    begin
+        for c:=1 to 5 do
+        begin
+            theSup[b,c]:=grid.Cells[c,b];
+        end;
+    end;
+end;
+
+procedure calendar.getSelectTests(grid: TstringGrid);
+var
+a,b,c : integer;
+begin
+    a:=1000;
+    for b:=0 to a do
+    begin
+        for c:=0 to 5 do
+        begin
+            grid.Cells[c,b]:=theTests[b,c];
+        end;
+    end;
+end;
+
+procedure calendar.setTests(grid: TstringGrid);
+var
+a,b,c : integer;
+begin
+    a:=grid.RowCount+1;
+    for b:=0 to a do
+    begin
+        for c:=0 to 5 do
+        begin
+            theTests[b,c]:=grid.Cells[c,b];
+        end;
+    end;
+end;
+
+procedure calendar.setVenues(grid: TstringGrid);
+var
+a,b,c : integer;
+begin
+    a:=grid.RowCount+1;
+    for b:=0 to a do
+    begin
+        for c:=1 to 3 do
+        begin
+            theVenues[b,c]:=grid.Cells[c,b];
+        end;
+    end;
+end;
+
+
+procedure calendar.getGridAll(_day:integer; grid: TStringGrid);
+var
+a,b,col : integer;
+begin
+    col:=0;
+    grid.RowCount:=iVenues+2;
+    grid.ColCount:=(iSessions+1)*3;
+    grid.Cells[0,0]:='Day '+intToStr(_day);
+    for b:=2 to iVenues+2 do
+       grid.Cells[0,b]:='Venue '+intToStr(b-1);
+    for a:=1 to iSessions do
+    begin
+        grid.Cells[a+col,0]:='Session '+intToStr(a);
+        grid.Cells[a+col,1]:='Test';
+        grid.Cells[a+col+1,1]:='Supervisors';
+        grid.Cells[a+col+2,1]:='Pupils';
+        grid.Cells[a+col+3,1]:='Avail seats';
+        for b:=2 to iVenues+1 do
+        begin
+            grid.Cells[a+col+3,b]:=theVenues[b-1,2];
+        end;
+        col:=col+3;
+    end;
+    if grid.RowCount>1 then grid.FixedRows:=2;
+    if grid.ColCount>1 then grid.FixedCols:=1;
+end;
+
+
+procedure calendar.setCalendar();
+var
+a : integer;
+begin
+//as
+end;
+
+procedure calendar.getDays(temp: Tstrings);
+var
+a : integer;
+begin
+    temp.Clear;
+    for a:=1 to iDays do
+    begin
+        temp.Append(intToStr(a));
+    end;
+end;
+
+//Gets the gridview for venues of a spicific day
+procedure calendar.getGridVenue(_day:integer; grid: TStringGrid);
+var
+a,b : integer;
+begin
+    grid.RowCount:=iVenues+1;
+    grid.ColCount:=iSessions+1;
+    grid.Cells[0,0]:='Day '+intToStr(_day);
+    for b:=1 to iVenues do
+       grid.Cells[0,b]:='Venue '+intToStr(b);
+    for a:=1 to iSessions do
+    begin
+        grid.Cells[a,0]:='Session '+intToStr(a);
+        for b:=1 to iVenues do
+        begin
+            grid.Cells[a,b]:=intToStr(theArray[_day,b,a,1]);
+        end;
+    end;
+    if grid.RowCount>1 then grid.FixedRows:=1;
+    if grid.ColCount>1 then grid.FixedCols:=1;
+end;
+
+//Gets the gridview for tests of a spicific day
+procedure calendar.getGridTest(_day:integer; grid: TStringGrid);
+var
+a,b : integer;
+begin
+    grid.RowCount:=iVenues+1;
+    grid.ColCount:=iSessions+1;
+    grid.Cells[0,0]:='Day '+intToStr(_day);
+    for b:=1 to iVenues do
+       grid.Cells[0,b]:='Venue '+intToStr(b);
+    for a:=1 to iSessions do
+    begin
+        grid.Cells[a,0]:='Session '+intToStr(a);
+        for b:=1 to iVenues do
+        begin
+            grid.Cells[a,b]:=intToStr(theArray[_day,b,a,2]);
+        end;
+    end;
+    if grid.RowCount>1 then grid.FixedRows:=1;
+    if grid.ColCount>1 then grid.FixedCols:=1;
+end;
+
+//Gets the gridview for supervisors of a spicific day
+procedure calendar.getGridSup(_day:integer; grid: TStringGrid);
+var
+a,b:integer;
+begin
+    grid.RowCount:=iVenues+1;
+    grid.ColCount:=iSessions+1;
+    grid.Cells[0,0]:='Day '+intToStr(_day);
+    for b:=1 to iVenues do
+       grid.Cells[0,b]:='Venue '+intToStr(b);
+    for a:=1 to iSessions do
+    begin
+        grid.Cells[a,0]:='Session '+intToStr(a);
+        for b:=1 to iVenues do
+        begin
+            grid.Cells[a,b]:=intToStr(theArray[_day,b,a,3])+','+
+            intToStr(theArray[_day,b,a,4])+','+intToStr(theArray[_day,b,a,5]);
+        end;
+    end;
+    if grid.RowCount>1 then grid.FixedRows:=1;
+    if grid.ColCount>1 then grid.FixedCols:=1;
+end;
+
+
+//Set the number of days, sessions, venues
+procedure calendar.setValues(_days:integer; _sessions:integer; _venues:integer);
+begin
+    iDays:=_days;
+    iSessions:=_sessions;
+    iVenues:=_venues;
+end;
+
+
+
+procedure calendar.setCalNull();
+var
+a,b,c: integer;
+begin
+    for a:=1 to 50 do
+    begin //Goes through the days
+        for b:=1 to 10 do
+        begin //Goes through sessions
+            for c:=1 to 50 do
+            begin //Goes through venues
+                theArray[a,b,c,0]:=0; //Venue ID
+                theArray[a,b,c,1]:=0; //Test ID
+                theArray[a,b,c,2]:=0; //Number of students
+                theArray[a,b,c,3]:=0; //Supervisor 1
+                theArray[a,b,c,4]:=0; //Supervisor 2
+                theArray[a,b,c,5]:=0; //Supervisor 3
+            end;
+        end;
+    end;
+end;
+
+end.
